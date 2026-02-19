@@ -1,0 +1,261 @@
+{
+  "categories": [
+    {
+      "id": "small-plates",
+      "name": "Small Plates",
+      "items": [
+        {
+          "id": "1",
+          "name": "Burrata with Roasted Tomatoes",
+          "description": "Creamy burrata, slow-roasted cherry tomatoes, basil oil, grilled sourdough",
+          "price": 18,
+          "dietary": ["vegetarian", "gluten-free-option"],
+          "highlight": true
+        },
+        {
+          "id": "2",
+          "name": "Spanish Octopus",
+          "description": "Tender grilled octopus, fingerling potatoes, smoked paprika, lemon aioli",
+          "price": 24,
+          "dietary": ["gluten-free"],
+          "highlight": true
+        },
+        {
+          "id": "3",
+          "name": "Tuna Crudo",
+          "description": "Yellowfin tuna, citrus, avocado, serrano, crispy shallots",
+          "price": 22,
+          "dietary": ["gluten-free"]
+        },
+        {
+          "id": "4",
+          "name": "Whipped Ricotta",
+          "description": "House-made ricotta, honey, marcona almonds, warm focaccia",
+          "price": 14,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "5",
+          "name": "Mussels Provençal",
+          "description": "Prince Edward Island mussels, white wine, garlic, herbs, grilled bread",
+          "price": 19,
+          "dietary": []
+        },
+        {
+          "id": "6",
+          "name": "Patatas Bravas",
+          "description": "Crispy potatoes, spicy tomato sauce, garlic aioli",
+          "price": 12,
+          "dietary": ["vegetarian", "vegan-option", "gluten-free"]
+        }
+      ]
+    },
+    {
+      "id": "pasta",
+      "name": "Pasta",
+      "items": [
+        {
+          "id": "7",
+          "name": "Cacio e Pepe",
+          "description": "House-made tonnarelli, pecorino romano, black pepper",
+          "price": 24,
+          "dietary": ["vegetarian"],
+          "highlight": true
+        },
+        {
+          "id": "8",
+          "name": "Lobster Linguine",
+          "description": "Maine lobster, cherry tomatoes, garlic, white wine, fresh herbs",
+          "price": 42,
+          "dietary": []
+        },
+        {
+          "id": "9",
+          "name": "Wild Mushroom Pappardelle",
+          "description": "Hand-cut pappardelle, forest mushrooms, truffle cream, parmesan",
+          "price": 28,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "10",
+          "name": "Rigatoni Bolognese",
+          "description": "Slow-cooked beef and pork ragù, fresh rigatoni, grana padano",
+          "price": 26,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "seafood",
+      "name": "Seafood",
+      "items": [
+        {
+          "id": "11",
+          "name": "Mediterranean Branzino",
+          "description": "Whole roasted branzino, lemon, capers, olives, roasted vegetables",
+          "price": 48,
+          "dietary": ["gluten-free"],
+          "highlight": true
+        },
+        {
+          "id": "12",
+          "name": "Seared Scallops",
+          "description": "Day-boat scallops, cauliflower purée, brown butter, crispy capers",
+          "price": 44,
+          "dietary": ["gluten-free"]
+        },
+        {
+          "id": "13",
+          "name": "Grilled Prawns",
+          "description": "Head-on prawns, garlic butter, lemon, fresh herbs, grilled bread",
+          "price": 38,
+          "dietary": []
+        },
+        {
+          "id": "14",
+          "name": "Bouillabaisse",
+          "description": "Classic Provençal fish stew, rouille, gruyère croutons",
+          "price": 52,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "meat",
+      "name": "Meat",
+      "items": [
+        {
+          "id": "15",
+          "name": "Bistecca Fiorentina",
+          "description": "42oz dry-aged porterhouse, rosemary, garlic, Tuscan olive oil (for two)",
+          "price": 145,
+          "dietary": ["gluten-free"]
+        },
+        {
+          "id": "16",
+          "name": "Lamb Chops",
+          "description": "Herb-crusted Colorado lamb, white bean purée, salsa verde",
+          "price": 52,
+          "dietary": ["gluten-free"]
+        },
+        {
+          "id": "17",
+          "name": "Duck Breast",
+          "description": "Pan-roasted duck, cherry gastrique, roasted root vegetables",
+          "price": 46,
+          "dietary": ["gluten-free"]
+        },
+        {
+          "id": "18",
+          "name": "Chicken Under a Brick",
+          "description": "Crispy half chicken, lemon, herbs, roasted garlic, potatoes",
+          "price": 36,
+          "dietary": ["gluten-free"]
+        }
+      ]
+    },
+    {
+      "id": "dessert",
+      "name": "Dessert",
+      "items": [
+        {
+          "id": "19",
+          "name": "Tiramisu",
+          "description": "Classic espresso-soaked ladyfingers, mascarpone, cocoa",
+          "price": 14,
+          "dietary": ["vegetarian"],
+          "highlight": true
+        },
+        {
+          "id": "20",
+          "name": "Olive Oil Cake",
+          "description": "Rosemary-infused cake, whipped mascarpone, citrus",
+          "price": 12,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "21",
+          "name": "Panna Cotta",
+          "description": "Vanilla bean panna cotta, seasonal berries, mint",
+          "price": 11,
+          "dietary": ["vegetarian", "gluten-free"]
+        },
+        {
+          "id": "22",
+          "name": "Affogato",
+          "description": "Vanilla gelato, espresso, amaretti cookie",
+          "price": 10,
+          "dietary": ["vegetarian"]
+        }
+      ]
+    },
+    {
+      "id": "cocktails",
+      "name": "Cocktails",
+      "items": [
+        {
+          "id": "23",
+          "name": "Coastal Negroni",
+          "description": "Gin, Campari, sweet vermouth, orange, sea salt",
+          "price": 16,
+          "dietary": ["vegan"]
+        },
+        {
+          "id": "24",
+          "name": "Mediterranean Spritz",
+          "description": "Prosecco, Aperol, elderflower, fresh herbs",
+          "price": 14,
+          "dietary": ["vegan"]
+        },
+        {
+          "id": "25",
+          "name": "Lavender Collins",
+          "description": "Gin, lavender syrup, lemon, sparkling water",
+          "price": 15,
+          "dietary": ["vegan"]
+        },
+        {
+          "id": "26",
+          "name": "Espresso Martini",
+          "description": "Vodka, coffee liqueur, fresh espresso, vanilla",
+          "price": 16,
+          "dietary": ["vegan"]
+        }
+      ]
+    },
+    {
+      "id": "wine",
+      "name": "Wine",
+      "items": [
+        {
+          "id": "27",
+          "name": "House White - Vermentino",
+          "description": "Sardinia, Italy - crisp, mineral, citrus notes",
+          "price": 14,
+          "dietary": ["vegan"]
+        },
+        {
+          "id": "28",
+          "name": "House Red - Côtes du Rhône",
+          "description": "Southern Rhône, France - medium body, berry, herbs",
+          "price": 15,
+          "dietary": ["vegan"]
+        },
+        {
+          "id": "29",
+          "name": "Rosé - Provence",
+          "description": "Provence, France - pale, dry, delicate",
+          "price": 16,
+          "dietary": ["vegan"]
+        },
+        {
+          "id": "30",
+          "name": "Sparkling - Cava Brut",
+          "description": "Penedès, Spain - crisp, toasty, fine bubbles",
+          "price": 13,
+          "dietary": ["vegan"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "regular": {
+    "monday": { "open": false },
+    "tuesday": { "open": true, "lunch": null, "dinner": "5:00 PM - 10:00 PM" },
+    "wednesday": { "open": true, "lunch": null, "dinner": "5:00 PM - 10:00 PM" },
+    "thursday": { "open": true, "lunch": null, "dinner": "5:00 PM - 10:00 PM" },
+    "friday": { "open": true, "lunch": null, "dinner": "5:00 PM - 11:00 PM" },
+    "saturday": { "open": true, "lunch": "11:30 AM - 2:30 PM", "dinner": "5:00 PM - 11:00 PM" },
+    "sunday": { "open": true, "lunch": "11:00 AM - 3:00 PM", "dinner": "4:00 PM - 9:00 PM" }
+  },
+  "kitchen": {
+    "lastSeating": {
+      "weekday": "9:00 PM",
+      "weekend": "10:00 PM",
+      "sunday": "8:00 PM"
+    }
+  },
+  "bar": {
+    "note": "Full bar service available during all operating hours. Bar seating is first-come, first-served."
+  },
+  "holidays": {
+    "note": "We close for major holidays. Please call ahead for holiday hours."
+  }
+}

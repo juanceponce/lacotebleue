@@ -1,0 +1,55 @@
+{
+  "upcoming": [
+    {
+      "id": "1",
+      "title": "Winemaker's Dinner: Provence",
+      "date": "2025-02-14",
+      "time": "7:00 PM",
+      "description": "Join us for an evening celebrating the wines of Provence, paired with a special five-course menu crafted by our chef.",
+      "price": 185,
+      "spots": 24
+    },
+    {
+      "id": "2",
+      "title": "Olive Oil Tasting",
+      "date": "2025-02-22",
+      "time": "4:00 PM",
+      "description": "Explore single-origin olive oils from Spain, Italy, and Greece. Light bites and wine included.",
+      "price": 75,
+      "spots": 16
+    },
+    {
+      "id": "3",
+      "title": "Sunday Supper: Pasta Making",
+      "date": "2025-03-02",
+      "time": "5:00 PM",
+      "description": "Learn to make fresh pasta with our chef. Hands-on class followed by a family-style dinner with your creations.",
+      "price": 125,
+      "spots": 12
+    },
+    {
+      "id": "4",
+      "title": "Spring Equinox Dinner",
+      "date": "2025-03-20",
+      "time": "7:00 PM",
+      "description": "A celebration of spring's first harvest with a seasonal tasting menu highlighting the best of early spring produce.",
+      "price": 165,
+      "spots": 40
+    }
+  ],
+  "privateDining": {
+    "description": "Our private dining room accommodates up to 24 guests, offering an intimate setting for celebrations, corporate gatherings, or simply an evening with those who matter most.",
+    "minimums": {
+      "lunch": 800,
+      "dinner": 1500,
+      "weekend": 2000
+    },
+    "features": [
+      "Dedicated service team",
+      "Customized menus",
+      "Wine pairing options",
+      "Audio-visual equipment",
+      "Complimentary menu tasting for host"
+    ]
+  }
+}

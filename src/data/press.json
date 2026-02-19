@@ -1,0 +1,34 @@
+{
+  "quotes": [
+    {
+      "id": "1",
+      "text": "A rare find—a restaurant that values your time by asking you to slow down and stay awhile.",
+      "source": "The Local Table Magazine",
+      "date": "2024"
+    },
+    {
+      "id": "2",
+      "text": "La Côte Bleue captures something essential about coastal dining: the understanding that a meal is not a transaction, but a moment.",
+      "source": "Coastal Living",
+      "date": "2024"
+    },
+    {
+      "id": "3",
+      "text": "The burrata alone is worth the visit. The experience is worth coming back for.",
+      "source": "Food & Wine",
+      "date": "2024"
+    },
+    {
+      "id": "4",
+      "text": "Hospitality that feels less like service and more like an invitation into someone's home.",
+      "source": "Bon Appétit",
+      "date": "2024"
+    },
+    {
+      "id": "5",
+      "text": "Finally, a restaurant that understands the Mediterranean isn't a cuisine—it's a state of mind.",
+      "source": "The New York Times",
+      "date": "2024"
+    }
+  ]
+}
