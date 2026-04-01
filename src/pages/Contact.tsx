@@ -176,7 +176,7 @@ export default function Contact() {
                       </svg>
                       <div>
                         <p className="text-marine-900 font-medium">Address</p>
-                        <p className="text-ink-600">123 Harbor Street<br />Seaside, CA 93955</p>
+                        <p className="text-ink-600">209 Forest Ave<br />Pacific Grove, CA 93950</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
@@ -211,12 +211,6 @@ export default function Contact() {
                   <h3 className="font-serif text-xl text-marine-900 mb-4">Getting Here</h3>
                   <div className="space-y-3 text-sm text-ink-600">
                     <p>
-                      <strong className="text-marine-900">By Car:</strong> We're located on Harbor Street between Main and Ocean. Street parking is available on both streets.
-                    </p>
-                    <p>
-                      <strong className="text-marine-900">Valet:</strong> Complimentary valet parking is available Friday and Saturday evenings, 5pm–close.
-                    </p>
-                    <p>
                       <strong className="text-marine-900">Public Transit:</strong> The downtown station is a 5-minute walk. Take the Coastal Line to Harbor Street.
                     </p>
                   </div>
@@ -236,7 +230,7 @@ export default function Contact() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
             <p className="text-marine-600 font-medium">Interactive Map</p>
-            <p className="text-marine-500 text-sm">123 Harbor Street, Seaside, CA 93955</p>
+            <p className="text-marine-500 text-sm">209 Forest Ave, Pacific Grove, CA 93950</p>
           </div>
         </div>
       </section>

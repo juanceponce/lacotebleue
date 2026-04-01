@@ -2,7 +2,6 @@ import { Button } from '../components/Button'
 import { Card, CardContent } from '../components/Card'
 import { SectionHeader } from '../components/SectionHeader'
 import { MenuItemCard } from '../components/MenuItemCard'
-import { Timeline } from '../components/Timeline'
 import { Scallop } from '../components/Logo'
 import menuData from '../data/menu.json'
 import pressData from '../data/press.json'
@@ -14,56 +13,37 @@ export default function Home() {
     .filter(item => item.highlight)
     .slice(0, 6)
 
-  const timelineItems = [
-    {
-      title: 'Friends & Family',
-      date: 'Jan 15 – 20',
-      description: 'Soft opening for close friends and family. Testing our service flow and gathering feedback.',
-      status: 'completed' as const,
-    },
-    {
-      title: 'Industry Nights',
-      date: 'Jan 22 – 26',
-      description: 'Welcoming fellow hospitality professionals. Late-night service, industry pricing.',
-      status: 'current' as const,
-    },
-    {
-      title: 'Opening Week',
-      date: 'Jan 28+',
-      description: 'Doors open to the public. Full menu, full hours, full hearts.',
-      status: 'upcoming' as const,
-    },
-  ]
-
   return (
     <div className="page-transition">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-b from-marine-900 via-marine-800 to-sand-50 overflow-hidden">
+      <section className="relative min-h-[88vh] flex items-end justify-center bg-marine-950 overflow-hidden">
         {/* Grain overlay for hero */}
-        <div className="absolute inset-0 opacity-[0.08] bg-grain bg-repeat pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.06] bg-grain bg-repeat pointer-events-none" />
+        {/* Radial glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(74,117,144,0.18),transparent)] pointer-events-none" />
 
-        <div className="relative z-10 text-center px-6 py-20">
+        <div className="relative z-10 text-center px-6 pb-28 pt-32 w-full">
+          <p className="text-marine-400 text-xs uppercase tracking-[0.3em] mb-8 animate-fade-in">
+            Pacific Grove, California
+          </p>
           <h1
-            className="text-5xl md:text-7xl lg:text-8xl text-sand-50 mb-6 animate-fade-in"
+            className="text-6xl md:text-8xl lg:text-9xl text-sand-50 mb-8 animate-fade-in leading-none"
             style={{ fontFamily: '"goodlife-brush", sans-serif', fontWeight: 400 }}
           >
             La Cote Bleue
           </h1>
-          <p className="text-sand-200 text-xl md:text-2xl max-w-2xl mx-auto mb-12 animate-slide-up font-light italic">
+          <p className="text-sand-400 text-base md:text-lg max-w-sm mx-auto mb-14 animate-slide-up font-light tracking-wide">
             It's the kind of place you don't rush through.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Button as="link" to="/reserve" size="lg">
               Reserve a Table
             </Button>
-            <Button as="link" to="/menu" variant="secondary" size="lg" className="bg-sand-50/10 border-sand-200/30 text-sand-50 hover:bg-sand-50/20">
+            <Button as="link" to="/menu" variant="secondary" size="lg" className="border-sand-600 text-sand-200 hover:bg-sand-50 hover:text-marine-900 hover:border-sand-50">
               View Menu
             </Button>
           </div>
         </div>
-
-        {/* Subtle wave decoration */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-sand-50 to-transparent" />
       </section>
 
       {/* Presence Promise */}
@@ -142,16 +122,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Soft Opening Timeline */}
-      <section className="section-padding bg-sand-100">
-        <div className="container-narrow">
-          <SectionHeader
-            title="Opening Soon"
-            subtitle="We're opening our doors gradually. Here's where we are."
-          />
-
-          <div className="mt-12 bg-white rounded-2xl p-8 md:p-12 border border-sand-200">
-            <Timeline items={timelineItems} />
+      {/* At a Glance */}
+      <section className="bg-sand-100 border-y border-sand-200">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-sand-200">
+            <div className="text-center py-14 md:px-12">
+              <p className="font-serif text-5xl text-marine-900 mb-3">Three</p>
+              <p className="text-ink-500 text-xs uppercase tracking-[0.2em]">Coastlines, One Kitchen</p>
+            </div>
+            <div className="text-center py-14 md:px-12">
+              <p className="font-serif text-5xl text-marine-900 mb-3">Seasonal</p>
+              <p className="text-ink-500 text-xs uppercase tracking-[0.2em]">Menu, Always Changing</p>
+            </div>
+            <div className="text-center py-14 md:px-12">
+              <p className="font-serif text-5xl text-marine-900 mb-3">Yours</p>
+              <p className="text-ink-500 text-xs uppercase tracking-[0.2em]">Table, All Evening</p>
+            </div>
           </div>
         </div>
       </section>
@@ -195,7 +181,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   <p className="text-marine-600 font-medium">Interactive map</p>
-                  <p className="text-marine-500 text-sm">123 Harbor Street, Seaside</p>
+                  <p className="text-marine-500 text-sm">209 Forest Ave, Pacific Grove</p>
                 </div>
               </div>
             </div>
@@ -207,14 +193,8 @@ export default function Home() {
                 <div>
                   <h3 className="font-medium text-marine-900 mb-2">Address</h3>
                   <p className="text-ink-600">
-                    123 Harbor Street<br />
-                    Seaside, CA 93955
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-marine-900 mb-2">Parking</h3>
-                  <p className="text-ink-600">
-                    Street parking available on Harbor and Main. Complimentary valet on Friday and Saturday evenings.
+                    209 Forest Ave<br />
+                    Pacific Grove, CA 93950
                   </p>
                 </div>
                 <div>

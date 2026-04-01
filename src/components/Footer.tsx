@@ -55,8 +55,8 @@ export function Footer() {
           <div>
             <h3 className="font-serif text-lg mb-4">Visit</h3>
             <address className="not-italic text-sm text-sand-300 space-y-2">
-              <p>123 Harbor Street</p>
-              <p>Seaside, CA 93955</p>
+              <p>209 Forest Ave</p>
+              <p>Pacific Grove, CA 93950</p>
               <p className="pt-2">
                 <a href="tel:+18315551234" className="hover:text-sand-100 transition-colors">
                   (831) 555-1234
@@ -133,7 +133,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-marine-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2 text-sand-400 text-sm">
             <Scallop className="w-4 h-4" />
-            <span>&copy; {new Date().getFullYear()} La Côte Bleue. All rights reserved.</span>
+            <span>&copy; {new Date().getFullYear()} La Cote Bleue. All rights reserved.</span>
           </div>
           <div className="flex gap-6 text-sm text-sand-400">
             <Link to="/contact" className="hover:text-sand-100 transition-colors">
