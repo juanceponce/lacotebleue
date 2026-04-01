@@ -3,7 +3,6 @@ import { SectionHeader } from '../components/SectionHeader'
 import { Card, CardContent } from '../components/Card'
 import { FormField } from '../components/FormField'
 import { Button } from '../components/Button'
-import hoursData from '../data/hours.json'
 
 const faqs = [
   {

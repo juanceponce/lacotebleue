@@ -2,9 +2,7 @@ import { Button } from '../components/Button'
 import { Card, CardContent } from '../components/Card'
 import { SectionHeader } from '../components/SectionHeader'
 import { MenuItemCard } from '../components/MenuItemCard'
-import { Scallop } from '../components/Logo'
 import menuData from '../data/menu.json'
-import pressData from '../data/press.json'
 
 export default function Home() {
   // Get signature dishes (highlighted items)
