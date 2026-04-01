@@ -146,6 +146,14 @@
       "name": "Desserts",
       "items": [
         {
+          "id": "20",
+          "name": "Crème Brûlée",
+          "description": "",
+          "price": 10,
+          "dietary": ["vegetarian", "gluten-free"],
+          "highlight": true
+        },
+        {
           "id": "17",
           "name": "Tiramisu",
           "description": "Fresh fruit with cocoa powder",

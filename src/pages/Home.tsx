@@ -143,7 +143,7 @@ export default function Home() {
       </section>
 
       {/* Press / Testimonials */}
-      <section className="section-padding bg-marine-900 text-sand-50">
+      {/* <section className="section-padding bg-marine-900 text-sand-50">
         <div className="container-wide">
           <div className="text-center mb-12">
             <h2 className="font-serif text-3xl md:text-4xl mb-4">Kind Words</h2>
@@ -166,7 +166,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Location */}
       <section className="section-padding bg-sand-50">

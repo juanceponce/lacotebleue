@@ -1,6 +1,6 @@
 {
   "regular": {
-    "monday": { "open": false },
+    "monday": { "open": true, "lunch": null, "dinner": "4:00 PM - 9:00 PM" },
     "tuesday": { "open": false },
     "wednesday": { "open": true, "lunch": null, "dinner": "4:00 PM - 9:00 PM" },
     "thursday": { "open": true, "lunch": null, "dinner": "4:00 PM - 9:00 PM" },

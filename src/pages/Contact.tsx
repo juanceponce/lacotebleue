@@ -142,11 +142,31 @@ export default function Contact() {
                   <h3 className="font-serif text-xl text-marine-900 mb-4">Hours</h3>
                   <dl className="space-y-3">
                     <div className="flex justify-between">
-                      <dt className="text-ink-600">Monday – Tuesday</dt>
+                      <dt className="text-ink-600">Monday</dt>
+                      <dd className="font-medium text-marine-900">4pm – 9pm</dd>
+                    </div>
+                    <div className="flex justify-between">
+                      <dt className="text-ink-600">Tuesday</dt>
                       <dd className="font-medium text-marine-900">Closed</dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-ink-600">Wednesday – Monday</dt>
+                      <dt className="text-ink-600">Wednesday</dt>
+                      <dd className="font-medium text-marine-900">4pm – 9pm</dd>
+                    </div>
+                    <div className="flex justify-between">
+                      <dt className="text-ink-600">Thursday</dt>
+                      <dd className="font-medium text-marine-900">4pm – 9pm</dd>
+                    </div>
+                    <div className="flex justify-between">
+                      <dt className="text-ink-600">Friday</dt>
+                      <dd className="font-medium text-marine-900">4pm – 9pm</dd>
+                    </div>
+                    <div className="flex justify-between">
+                      <dt className="text-ink-600">Saturday</dt>
+                      <dd className="font-medium text-marine-900">4pm – 9pm</dd>
+                    </div>
+                    <div className="flex justify-between">
+                      <dt className="text-ink-600">Sunday</dt>
                       <dd className="font-medium text-marine-900">4pm – 9pm</dd>
                     </div>
                   </dl>

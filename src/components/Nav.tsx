@@ -6,7 +6,7 @@ import { Button } from './Button'
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/menu', label: 'Menu' },
-  { to: '/story', label: 'Our Story' },
+  // { to: '/story', label: 'Our Story' },
   { to: '/events', label: 'Events' },
   { to: '/contact', label: 'Contact' },
 ]

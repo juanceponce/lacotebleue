@@ -33,11 +33,31 @@ export function Footer() {
             <h3 className="font-serif text-lg mb-4">Hours</h3>
             <dl className="space-y-2 text-sm text-sand-300">
               <div className="flex justify-between">
-                <dt>Mon – Tue</dt>
+                <dt>Monday</dt>
+                <dd>4pm – 9pm</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt>Tuesday</dt>
                 <dd>Closed</dd>
               </div>
               <div className="flex justify-between">
-                <dt>Wed – Mon</dt>
+                <dt>Wednesday</dt>
+                <dd>4pm – 9pm</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt>Thursday</dt>
+                <dd>4pm – 9pm</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt>Friday</dt>
+                <dd>4pm – 9pm</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt>Saturday</dt>
+                <dd>4pm – 9pm</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt>Sunday</dt>
                 <dd>4pm – 9pm</dd>
               </div>
             </dl>
@@ -96,7 +116,7 @@ export function Footer() {
             {/* Social */}
             <div className="flex gap-4 mt-6">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/cotebleue.pg/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sand-400 hover:text-sand-100 transition-colors"

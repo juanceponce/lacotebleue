@@ -22,8 +22,10 @@ export default function Events() {
     setFormSubmitted(true)
   }
 
+  const parseDate = (dateStr: string) => new Date(dateStr + 'T12:00:00')
+
   const formatDate = (dateStr: string) => {
-    return new Date(dateStr).toLocaleDateString('en-US', {
+    return parseDate(dateStr).toLocaleDateString('en-US', {
       weekday: 'long',
       month: 'long',
       day: 'numeric',
@@ -113,7 +115,12 @@ export default function Events() {
                       <p className="text-sm text-ink-500 mb-1">
                         {formatDate(event.date)} at {event.time}
                       </p>
-                      <p className="text-xs text-ink-400">{event.spots} spots available</p>
+                      <div className="flex items-center gap-2">
+                        <p className="text-xs text-ink-400">{event.spots} spots available</p>
+                        {(event as any).status === 'pending' && (
+                          <span className="text-xs font-medium text-amber-600 uppercase tracking-wide">Pending</span>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -146,10 +153,10 @@ export default function Events() {
                   <div className="flex gap-4">
                     <div className="flex-shrink-0 w-16 text-center">
                       <div className="text-2xl font-serif text-marine-900">
-                        {new Date(event.date).getDate()}
+                        {parseDate(event.date).getDate()}
                       </div>
                       <div className="text-sm text-ink-500 uppercase">
-                        {new Date(event.date).toLocaleDateString('en-US', { month: 'short' })}
+                        {parseDate(event.date).toLocaleDateString('en-US', { month: 'short' })}
                       </div>
                     </div>
                     <div className="flex-1">
@@ -159,6 +166,9 @@ export default function Events() {
                         <span className="text-ink-500">{event.time}</span>
                         <span className="text-foam-600 font-medium">${event.price}/person</span>
                         <span className="text-ink-400">{event.spots} spots left</span>
+                        {(event as any).status === 'pending' && (
+                          <span className="text-xs font-medium text-amber-600 uppercase tracking-wide">Pending</span>
+                        )}
                       </div>
                     </div>
                   </div>
