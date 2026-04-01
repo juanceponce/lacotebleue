@@ -198,8 +198,8 @@ export default function Home() {
                 <div>
                   <h3 className="font-medium text-marine-900 mb-2">Contact</h3>
                   <p className="text-ink-600">
-                    <a href="tel:+18315551234" className="hover:text-marine-600 transition-colors">(831) 555-1234</a><br />
-                    <a href="mailto:hello@lacotebleue.com" className="hover:text-marine-600 transition-colors">hello@lacotebleue.com</a>
+                    <a href="tel:+18312339286" className="hover:text-marine-600 transition-colors">(831) 233-9286</a><br />
+                    <a href="mailto:team@lacotebleuepg.com" className="hover:text-marine-600 transition-colors">team@lacotebleuepg.com</a>
                   </p>
                 </div>
                 <Button as="link" to="/contact">

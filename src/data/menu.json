@@ -85,6 +85,13 @@
           "highlight": true
         },
         {
+          "id": "46",
+          "name": "Crab Ravioli",
+          "description": "Lobster bisque",
+          "price": 32,
+          "dietary": []
+        },
+        {
           "id": "11",
           "name": "Paella Mixta",
           "description": "Chicken, Spanish chorizo, rock cod and shrimp with saffron rice",

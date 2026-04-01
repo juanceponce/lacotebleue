@@ -70,13 +70,13 @@ export function Footer() {
               <p>209 Forest Ave</p>
               <p>Pacific Grove, CA 93950</p>
               <p className="pt-2">
-                <a href="tel:+18315551234" className="hover:text-sand-100 transition-colors">
-                  (831) 555-1234
+                <a href="tel:+18312339286" className="hover:text-sand-100 transition-colors">
+                  (831) 233-9286
                 </a>
               </p>
               <p>
-                <a href="mailto:hello@lacotebleue.com" className="hover:text-sand-100 transition-colors">
-                  hello@lacotebleue.com
+                <a href="mailto:team@lacotebleuepg.com" className="hover:text-sand-100 transition-colors">
+                  team@lacotebleuepg.com
                 </a>
               </p>
             </address>

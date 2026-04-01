@@ -193,8 +193,8 @@ export default function Contact() {
                       </svg>
                       <div>
                         <p className="text-marine-900 font-medium">Phone</p>
-                        <a href="tel:+18315551234" className="text-ink-600 hover:text-marine-600 transition-colors">
-                          (831) 555-1234
+                        <a href="tel:+18312339286" className="text-ink-600 hover:text-marine-600 transition-colors">
+                          (831) 233-9286
                         </a>
                       </div>
                     </div>
@@ -204,8 +204,8 @@ export default function Contact() {
                       </svg>
                       <div>
                         <p className="text-marine-900 font-medium">Email</p>
-                        <a href="mailto:hello@lacotebleue.com" className="text-ink-600 hover:text-marine-600 transition-colors">
-                          hello@lacotebleue.com
+                        <a href="mailto:team@lacotebleuepg.com" className="text-ink-600 hover:text-marine-600 transition-colors">
+                          team@lacotebleuepg.com
                         </a>
                       </div>
                     </div>

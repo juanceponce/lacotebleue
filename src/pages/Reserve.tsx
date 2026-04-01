@@ -238,7 +238,7 @@ export default function Reserve() {
               </div>
               {parseInt(formData.partySize) >= 7 && (
                 <p className="mt-2 text-sm text-ink-500">
-                  For parties of 7 or more, please call us at (831) 555-1234 or inquire about private dining.
+                  For parties of 7 or more, please call us at (831) 233-9286 or inquire about private dining.
                 </p>
               )}
             </div>
