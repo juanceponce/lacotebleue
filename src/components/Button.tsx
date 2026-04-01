@@ -28,18 +28,18 @@ export function Button({
   className = '',
   ...props
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-marine-500 disabled:opacity-50 disabled:cursor-not-allowed'
+  const baseStyles = 'inline-flex items-center justify-center font-sans font-medium tracking-wide transition-all duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-marine-500 disabled:opacity-50 disabled:cursor-not-allowed'
 
   const variants = {
-    primary: 'bg-marine-900 text-sand-50 hover:bg-marine-800 active:bg-marine-950',
-    secondary: 'bg-sand-100 text-marine-900 border border-marine-200 hover:bg-sand-200 active:bg-sand-300',
+    primary: 'bg-marine-900 text-sand-50 hover:bg-marine-700 active:bg-marine-950',
+    secondary: 'bg-transparent text-marine-900 border border-marine-300 hover:bg-marine-900 hover:text-sand-50 hover:border-marine-900 active:bg-marine-950',
     ghost: 'text-marine-900 hover:bg-marine-50 active:bg-marine-100',
   }
 
   const sizes = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg',
+    sm: 'px-5 py-2 text-sm',
+    md: 'px-7 py-3 text-sm',
+    lg: 'px-9 py-4 text-base',
   }
 
   const combinedClassName = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`

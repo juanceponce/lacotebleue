@@ -1,45 +1,45 @@
 {
   "categories": [
     {
-      "id": "small-plates",
-      "name": "Small Plates",
+      "id": "starters",
+      "name": "Starters",
       "items": [
         {
           "id": "1",
-          "name": "Green Goddess",
-          "description": "Lettuce, creamy avocado herb dressing with tarragon, lemon, and garlic",
+          "name": "Oysters",
+          "description": "Freshly shucked, served chilled with classic accompaniments",
           "price": 16,
-          "dietary": ["vegetarian", "gluten-free"]
+          "dietary": ["gluten-free"]
         },
         {
           "id": "2",
+          "name": "BBQ Oysters",
+          "description": "Wood-fired oysters with smoky, herbaceous butter",
+          "price": 16,
+          "dietary": ["gluten-free"]
+        },
+        {
+          "id": "3",
           "name": "Little Neck Clams",
           "description": "White wine-fish stock and herbs",
           "price": 17,
+          "dietary": []
+        },
+        {
+          "id": "4",
+          "name": "Fritto Misto",
+          "description": "Crispy fried seafood with a spicy marinara",
+          "price": 18,
           "dietary": []
         }
       ]
     },
     {
-      "id": "pasta",
-      "name": "Pasta",
+      "id": "sea",
+      "name": "Sea",
       "items": [
         {
-          "id": "3",
-          "name": "Fresh Bucatini",
-          "description": "Jumbo prawns, roasted tomatoes, garlic, basil, light cream",
-          "price": 36,
-          "dietary": [],
-          "highlight": true
-        }
-      ]
-    },
-    {
-      "id": "seafood",
-      "name": "Seafood",
-      "items": [
-        {
-          "id": "4",
+          "id": "5",
           "name": "Whole Fish",
           "description": "Chimichurri and roasted vegetables",
           "price": 32,
@@ -47,42 +47,121 @@
           "highlight": true
         },
         {
-          "id": "5",
-          "name": "Hawaiian Swordfish",
-          "description": "Peppercorn sauce and pommes purée",
-          "price": 32,
-          "dietary": ["gluten-free"]
+          "id": "6",
+          "name": "Fish & Chips",
+          "description": "Beer-battered fish with golden frites",
+          "price": 24,
+          "dietary": []
         },
         {
-          "id": "6",
+          "id": "7",
           "name": "Herb-Crusted Cod",
           "description": "Over pommes purée and mushroom butter sauce",
           "price": 25,
+          "dietary": [],
+          "highlight": true
+        },
+        {
+          "id": "8",
+          "name": "Sea Harvest Pasta",
+          "description": "Fresh seafood medley in a light, flavourful sauce",
+          "price": 28,
           "dietary": []
+        },
+        {
+          "id": "9",
+          "name": "Fresh Bucatini",
+          "description": "Jumbo prawns, roasted tomatoes, garlic, basil, light cream",
+          "price": 36,
+          "dietary": [],
+          "highlight": true
+        },
+        {
+          "id": "10",
+          "name": "Hawaiian Swordfish",
+          "description": "Peppercorn sauce and pommes purée",
+          "price": 32,
+          "dietary": ["gluten-free"],
+          "highlight": true
+        },
+        {
+          "id": "11",
+          "name": "Paella Mixta",
+          "description": "Chicken, Spanish chorizo, rock cod and shrimp with saffron rice",
+          "price": 38,
+          "dietary": ["gluten-free"]
         }
       ]
     },
     {
-      "id": "meat",
-      "name": "Meat",
+      "id": "land",
+      "name": "Land",
       "items": [
         {
-          "id": "7",
+          "id": "12",
           "name": "Slow-Braised Short Rib",
           "description": "Soft polenta, root vegetables, and red wine jus",
           "price": 32,
           "dietary": ["gluten-free"],
           "highlight": true
+        },
+        {
+          "id": "13",
+          "name": "Steak Frites",
+          "description": "Prime Ribeye, pommes frites, Bordelaise sauce",
+          "price": 59,
+          "dietary": ["gluten-free"]
+        },
+        {
+          "id": "14",
+          "name": "Harissa Half Chicken",
+          "description": "Pommes purée, with vegetables",
+          "price": 36,
+          "dietary": ["gluten-free"]
         }
       ]
     },
     {
-      "id": "dessert",
-      "name": "Dessert",
+      "id": "plant",
+      "name": "Plant",
       "items": [
         {
-          "id": "8",
+          "id": "15",
+          "name": "House Salad Seasonal",
+          "description": "Mixed greens, radicchio, herbs, house vinaigrette and Comtè",
+          "price": 16,
+          "dietary": ["vegetarian", "gluten-free"]
+        },
+        {
+          "id": "16",
+          "name": "Green Goddess",
+          "description": "Lettuce, creamy avocado herb dressing with tarragon, lemon, and garlic",
+          "price": 16,
+          "dietary": ["vegetarian", "gluten-free"]
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "17",
+          "name": "Tiramisu",
+          "description": "Fresh fruit with cocoa powder",
+          "price": 12,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "18",
           "name": "Apple Bread Pudding",
+          "description": "Fresh fruit with Chantilly cream",
+          "price": 10,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "19",
+          "name": "Strawberry Cake",
           "description": "Fresh fruit with Chantilly cream",
           "price": 10,
           "dietary": ["vegetarian"]
@@ -90,70 +169,200 @@
       ]
     },
     {
-      "id": "cocktails",
-      "name": "Cocktails",
+      "id": "white-wine",
+      "name": "White Wine",
       "items": [
         {
           "id": "23",
-          "name": "Coastal Negroni",
-          "description": "Gin, Campari, sweet vermouth, orange, sea salt",
-          "price": 16,
-          "dietary": ["vegan"]
+          "name": "Rosé Listel",
+          "description": "France",
+          "price": 11,
+          "priceLabel": "$11 / $34",
+          "dietary": []
         },
         {
           "id": "24",
-          "name": "Mediterranean Spritz",
-          "description": "Prosecco, Aperol, elderflower, fresh herbs",
+          "name": "Muscadet",
+          "description": "Loire Valley, France",
           "price": 14,
-          "dietary": ["vegan"]
+          "priceLabel": "$14 / $42",
+          "dietary": []
         },
         {
           "id": "25",
-          "name": "Lavender Collins",
-          "description": "Gin, lavender syrup, lemon, sparkling water",
-          "price": 15,
-          "dietary": ["vegan"]
+          "name": "Chardonnay Private Property",
+          "description": "Monterey",
+          "price": 14,
+          "priceLabel": "$14 / $48",
+          "dietary": []
         },
         {
           "id": "26",
-          "name": "Espresso Martini",
-          "description": "Vodka, coffee liqueur, fresh espresso, vanilla",
-          "price": 16,
-          "dietary": ["vegan"]
+          "name": "Chardonnay, Matthiasson",
+          "description": "Napa",
+          "price": 18,
+          "priceLabel": "$18 / $63",
+          "dietary": []
+        },
+        {
+          "id": "27",
+          "name": "Prosecco Split Poggio",
+          "description": "Italy",
+          "price": 12,
+          "dietary": []
         }
       ]
     },
     {
-      "id": "wine",
-      "name": "Wine",
+      "id": "red-wine",
+      "name": "Red Wine",
       "items": [
         {
-          "id": "27",
-          "name": "House White - Vermentino",
-          "description": "Sardinia, Italy - crisp, mineral, citrus notes",
-          "price": 14,
-          "dietary": ["vegan"]
-        },
-        {
           "id": "28",
-          "name": "House Red - Cotes du Rhône",
-          "description": "Southern Rhône, France - medium body, berry, herbs",
-          "price": 15,
-          "dietary": ["vegan"]
+          "name": "Cabernet Sauvignon HAHN",
+          "description": "Monterey",
+          "price": 12,
+          "priceLabel": "$12 / $34",
+          "dietary": []
         },
         {
           "id": "29",
-          "name": "Rosé - Provence",
-          "description": "Provence, France - pale, dry, delicate",
-          "price": 16,
-          "dietary": ["vegan"]
+          "name": "Syrah Mont Gravet",
+          "description": "France",
+          "price": 12,
+          "priceLabel": "$12 / $36",
+          "dietary": []
         },
         {
           "id": "30",
-          "name": "Sparkling - Cava Brut",
-          "description": "Penedès, Spain - crisp, toasty, fine bubbles",
+          "name": "Pinot Noir Bold Wine",
+          "description": "Hollister",
           "price": 13,
-          "dietary": ["vegan"]
+          "priceLabel": "$13 / $54",
+          "dietary": []
+        },
+        {
+          "id": "31",
+          "name": "Grenache Ryme",
+          "description": "Forestville",
+          "price": 13,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "wine-bottle",
+      "name": "Wine by the Bottle",
+      "items": [
+        {
+          "id": "32",
+          "name": "Rosé Lorenza",
+          "description": "Lodi",
+          "price": 36,
+          "dietary": []
+        },
+        {
+          "id": "33",
+          "name": "Chardonnay Farm Cottage",
+          "description": "Santa Cruz",
+          "price": 68,
+          "dietary": []
+        },
+        {
+          "id": "34",
+          "name": "Chardonnay Rombauer",
+          "description": "Napa",
+          "price": 82,
+          "dietary": []
+        },
+        {
+          "id": "35",
+          "name": "Roussanne, Holus Bolus",
+          "description": "Santa Maria",
+          "price": 63,
+          "dietary": []
+        },
+        {
+          "id": "36",
+          "name": "Pinot Noir Farm Cottage",
+          "description": "Santa Cruz",
+          "price": 54,
+          "dietary": []
+        },
+        {
+          "id": "37",
+          "name": "Red Blend Hocus Pocus",
+          "description": "Santa Barbara",
+          "price": 63,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "beer",
+      "name": "Beer on Tap",
+      "items": [
+        {
+          "id": "38",
+          "name": "Light Pilsner",
+          "description": "16 oz — Fruition Brewing",
+          "price": 12,
+          "dietary": []
+        },
+        {
+          "id": "39",
+          "name": "Pale Ale",
+          "description": "16 oz — Fruition Brewing",
+          "price": 12,
+          "dietary": []
+        },
+        {
+          "id": "40",
+          "name": "Rosé Snack",
+          "description": "16 oz — Fruition Brewing",
+          "price": 12,
+          "dietary": []
+        },
+        {
+          "id": "41",
+          "name": "P.P.O.G Snack",
+          "description": "16 oz — Fruition Brewing",
+          "price": 12,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "soft-drinks",
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "id": "42",
+          "name": "Iced Black Tea",
+          "description": "",
+          "price": 4,
+          "dietary": ["vegan", "gluten-free"]
+        },
+        {
+          "id": "43",
+          "name": "Mexican Coke",
+          "description": "",
+          "price": 6,
+          "dietary": ["vegan", "gluten-free"]
+        },
+        {
+          "id": "44",
+          "name": "Diet Coke",
+          "description": "",
+          "price": 3,
+          "dietary": ["vegan", "gluten-free"]
+        },
+        {
+          "id": "45",
+          "name": "Pellegrino 750ml",
+          "description": "",
+          "price": 8,
+          "dietary": ["vegan", "gluten-free"]
         }
       ]
     }

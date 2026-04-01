@@ -1,4 +1,4 @@
-# La Côte Bleue
+# La Cote Bleue
 
 A French-Spanish-Italian coastal bistro website built with React, TypeScript, and Tailwind CSS.
 

@@ -5,6 +5,7 @@ interface MenuItem {
   name: string
   description: string
   price: number
+  priceLabel?: string
   dietary: string[]
   highlight?: boolean
 }
@@ -47,7 +48,7 @@ export function MenuItemCard({ item, className = '' }: MenuItemCardProps) {
           )}
         </div>
         <div className="text-marine-900 font-medium tabular-nums">
-          ${item.price}
+          {item.priceLabel ?? `$${item.price}`}
         </div>
       </div>
     </div>

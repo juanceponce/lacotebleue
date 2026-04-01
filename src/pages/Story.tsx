@@ -41,7 +41,7 @@ export default function Story() {
         <div className="container-narrow">
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-ink-700 leading-relaxed mb-8">
-              La Côte Bleue was born from summers spent on three different shores: the rocky coves of the French Riviera, the sun-drenched beaches of Barcelona, and the fishing villages of the Amalfi Coast.
+              La Cote Bleue was born from summers spent on three different shores: the rocky coves of the French Riviera, the sun-drenched beaches of Barcelona, and the fishing villages of the Amalfi Coast.
             </p>
 
             <p className="text-ink-600 leading-relaxed mb-8">
@@ -63,33 +63,36 @@ export default function Story() {
             subtitle="The flavors that inspire our kitchen."
           />
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
+          <div className="grid md:grid-cols-3 gap-12 mt-14">
             <div className="text-center">
-              <div className="w-24 h-24 rounded-full bg-marine-100 flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">🇫🇷</span>
+              <div className="mb-6">
+                <span className="font-serif text-7xl text-marine-200 leading-none select-none">I</span>
+                <div className="w-8 h-px bg-marine-300 mx-auto mt-3" />
               </div>
-              <h3 className="font-serif text-xl text-marine-900 mb-3">France</h3>
-              <p className="text-ink-600">
+              <h3 className="font-serif text-xl text-marine-900 mb-3 tracking-wide">France</h3>
+              <p className="text-ink-600 text-sm leading-relaxed">
                 Bouillabaisse traditions, Provençal herbs, the art of the long lunch. Butter, wine, and unhurried conversation.
               </p>
             </div>
 
             <div className="text-center">
-              <div className="w-24 h-24 rounded-full bg-marine-100 flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">🇪🇸</span>
+              <div className="mb-6">
+                <span className="font-serif text-7xl text-marine-200 leading-none select-none">II</span>
+                <div className="w-8 h-px bg-marine-300 mx-auto mt-3" />
               </div>
-              <h3 className="font-serif text-xl text-marine-900 mb-3">Spain</h3>
-              <p className="text-ink-600">
+              <h3 className="font-serif text-xl text-marine-900 mb-3 tracking-wide">Spain</h3>
+              <p className="text-ink-600 text-sm leading-relaxed">
                 Tapas culture, bold paprika, the spirit of sobremesa. The understanding that dinner is just the beginning.
               </p>
             </div>
 
             <div className="text-center">
-              <div className="w-24 h-24 rounded-full bg-marine-100 flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">🇮🇹</span>
+              <div className="mb-6">
+                <span className="font-serif text-7xl text-marine-200 leading-none select-none">III</span>
+                <div className="w-8 h-px bg-marine-300 mx-auto mt-3" />
               </div>
-              <h3 className="font-serif text-xl text-marine-900 mb-3">Italy</h3>
-              <p className="text-ink-600">
+              <h3 className="font-serif text-xl text-marine-900 mb-3 tracking-wide">Italy</h3>
+              <p className="text-ink-600 text-sm leading-relaxed">
                 Hand-made pasta, coastal simplicity, respect for ingredients. The belief that less, done well, is always more.
               </p>
             </div>
@@ -155,22 +158,23 @@ export default function Story() {
             subtitle="Designed for presence."
           />
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-12">
-            {/* Placeholder images */}
-            {[1, 2, 3, 4, 5, 6].map((i) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-12">
+            {[
+              { span: 'md:col-span-2 md:row-span-2', label: 'The Dining Room' },
+              { span: '', label: 'The Bar' },
+              { span: '', label: 'The Terrace' },
+              { span: '', label: 'The Kitchen' },
+              { span: '', label: 'The Details' },
+            ].map((cell, i) => (
               <div
                 key={i}
-                className={`relative bg-marine-100 rounded-xl overflow-hidden ${
-                  i === 1 ? 'md:col-span-2 md:row-span-2 aspect-square md:aspect-auto' : 'aspect-square'
-                }`}
+                className={`relative bg-gradient-to-br from-marine-100 to-marine-50 rounded-2xl overflow-hidden aspect-square ${cell.span}`}
               >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-marine-400">
-                    <svg className="w-12 h-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span className="text-sm">Photo {i}</span>
-                  </div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                  <div className="w-8 h-px bg-marine-300" />
+                  <span className="text-marine-500 text-xs uppercase tracking-[0.15em] font-medium">
+                    {cell.label}
+                  </span>
                 </div>
               </div>
             ))}
@@ -185,7 +189,7 @@ export default function Story() {
             "We didn't want to build a restaurant. We wanted to build a place where people feel at home—where the food is memorable, the service is warm, and time seems to slow down a little."
           </p>
           <p className="mt-4 text-marine-900 font-medium">
-            — The La Côte Bleue Team
+            — The La Cote Bleue Team
           </p>
         </div>
       </section>

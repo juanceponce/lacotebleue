@@ -142,25 +142,14 @@ export default function Contact() {
                   <h3 className="font-serif text-xl text-marine-900 mb-4">Hours</h3>
                   <dl className="space-y-3">
                     <div className="flex justify-between">
-                      <dt className="text-ink-600">Monday</dt>
+                      <dt className="text-ink-600">Monday – Tuesday</dt>
                       <dd className="font-medium text-marine-900">Closed</dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-ink-600">Tuesday – Thursday</dt>
-                      <dd className="font-medium text-marine-900">5pm – 10pm</dd>
-                    </div>
-                    <div className="flex justify-between">
-                      <dt className="text-ink-600">Friday – Saturday</dt>
-                      <dd className="font-medium text-marine-900">5pm – 11pm</dd>
-                    </div>
-                    <div className="flex justify-between">
-                      <dt className="text-ink-600">Sunday</dt>
+                      <dt className="text-ink-600">Wednesday – Monday</dt>
                       <dd className="font-medium text-marine-900">4pm – 9pm</dd>
                     </div>
                   </dl>
-                  <p className="mt-4 text-sm text-ink-500">
-                    {hoursData.bar.note}
-                  </p>
                 </CardContent>
               </Card>
 
@@ -205,17 +194,6 @@ export default function Contact() {
                 </CardContent>
               </Card>
 
-              {/* Getting Here */}
-              <Card className="p-6">
-                <CardContent>
-                  <h3 className="font-serif text-xl text-marine-900 mb-4">Getting Here</h3>
-                  <div className="space-y-3 text-sm text-ink-600">
-                    <p>
-                      <strong className="text-marine-900">Public Transit:</strong> The downtown station is a 5-minute walk. Take the Coastal Line to Harbor Street.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>

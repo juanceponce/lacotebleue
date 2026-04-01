@@ -13,7 +13,7 @@ export function Logo({ className = '', size = 'md' }: LogoProps) {
   return (
     <img
       src="/boat.jpg"
-      alt="La Côte Bleue logo"
+      alt="La Cote Bleue logo"
       className={`${sizes[size]} ${className} object-contain`}
     />
   )

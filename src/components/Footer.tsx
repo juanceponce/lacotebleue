@@ -33,19 +33,11 @@ export function Footer() {
             <h3 className="font-serif text-lg mb-4">Hours</h3>
             <dl className="space-y-2 text-sm text-sand-300">
               <div className="flex justify-between">
-                <dt>Monday</dt>
+                <dt>Mon – Tue</dt>
                 <dd>Closed</dd>
               </div>
               <div className="flex justify-between">
-                <dt>Tue – Thu</dt>
-                <dd>5pm – 10pm</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt>Fri – Sat</dt>
-                <dd>5pm – 11pm</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt>Sunday</dt>
+                <dt>Wed – Mon</dt>
                 <dd>4pm – 9pm</dd>
               </div>
             </dl>
