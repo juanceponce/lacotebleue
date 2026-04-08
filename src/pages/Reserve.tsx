@@ -1,4 +1,5 @@
 import { useState, FormEvent } from 'react'
+import { submitReservation } from '../services/reservations'
 import { FormField } from '../components/FormField'
 import { Button } from '../components/Button'
 import { Card, CardContent } from '../components/Card'
@@ -52,6 +53,8 @@ export default function Reserve() {
 
   const [errors, setErrors] = useState<FormErrors>({})
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [suggestedTimes, setSuggestedTimes] = useState<string[]>([])
 
   const validateForm = (): boolean => {
@@ -90,20 +93,39 @@ export default function Reserve() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
     if (validateForm()) {
-      // Simulate suggested alternatives if flexible
-      if (formData.flexible) {
-        const timeIndex = timeSlots.indexOf(formData.time)
-        const alternatives = timeSlots
-          .filter((_, i) => Math.abs(i - timeIndex) <= 2 && i !== timeIndex)
-          .slice(0, 3)
-        setSuggestedTimes(alternatives)
-      }
+      setSubmitting(true)
+      setSubmitError('')
+      try {
+        await submitReservation({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          date: formData.date,
+          time: formData.time,
+          party_size: parseInt(formData.partySize),
+          occasion: formData.occasion,
+          notes: formData.notes,
+          flexible: formData.flexible,
+        })
 
-      setSubmitted(true)
+        if (formData.flexible) {
+          const timeIndex = timeSlots.indexOf(formData.time)
+          const alternatives = timeSlots
+            .filter((_, i) => Math.abs(i - timeIndex) <= 2 && i !== timeIndex)
+            .slice(0, 3)
+          setSuggestedTimes(alternatives)
+        }
+
+        setSubmitted(true)
+      } catch (err) {
+        setSubmitError('Something went wrong. Please call us at (831) 233-9286 or email team@lacotebleuepg.com.')
+      } finally {
+        setSubmitting(false)
+      }
     }
   }
 
@@ -353,8 +375,11 @@ export default function Reserve() {
               </label>
             </div>
 
-            <Button type="submit" size="lg" className="w-full">
-              Request Reservation
+            {submitError && (
+              <p className="text-red-600 text-sm text-center">{submitError}</p>
+            )}
+            <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+              {submitting ? 'Submitting...' : 'Request Reservation'}
             </Button>
           </form>
 
