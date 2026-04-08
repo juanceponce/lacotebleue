@@ -66,16 +66,25 @@ export default function Reserve() {
     if (!formData.date) {
       newErrors.date = 'Please select a date'
     } else {
-      const selectedDate = new Date(formData.date)
+      const selectedDate = new Date(formData.date + 'T12:00:00')
       const today = new Date()
       today.setHours(0, 0, 0, 0)
       if (selectedDate < today) {
-        newErrors.date = 'Please select a future date'
+        newErrors.date = 'Please select today or a future date'
       }
     }
 
     if (!formData.time) {
       newErrors.time = 'Please select a time'
+    } else if (formData.date === new Date().toISOString().split('T')[0]) {
+      const [time, meridiem] = formData.time.split(' ')
+      const [hours, minutes] = time.split(':').map(Number)
+      const slotHour = meridiem === 'PM' && hours !== 12 ? hours + 12 : hours
+      const slotMinutes = minutes
+      const now = new Date()
+      if (slotHour < now.getHours() || (slotHour === now.getHours() && slotMinutes <= now.getMinutes())) {
+        newErrors.time = 'This time has already passed — please select a later slot'
+      }
     }
 
     if (!formData.name.trim()) {
@@ -234,7 +243,14 @@ export default function Reserve() {
                 required
               >
                 <option value="">Select a time</option>
-                {timeSlots.map(time => (
+                {timeSlots.filter(time => {
+                  if (formData.date !== new Date().toISOString().split('T')[0]) return true
+                  const [t, meridiem] = time.split(' ')
+                  const [hours, minutes] = t.split(':').map(Number)
+                  const slotHour = meridiem === 'PM' && hours !== 12 ? hours + 12 : hours
+                  const now = new Date()
+                  return slotHour > now.getHours() || (slotHour === now.getHours() && Number(minutes) > now.getMinutes())
+                }).map(time => (
                   <option key={time} value={time}>{time}</option>
                 ))}
               </FormField>
