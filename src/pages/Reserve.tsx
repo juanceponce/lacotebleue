@@ -167,7 +167,7 @@ export default function Reserve() {
           <p className="text-ink-600 mb-6">
             Thank you, {formData.name.split(' ')[0]}. We've received your reservation request for{' '}
             <strong>{formData.partySize} guests</strong> on{' '}
-            <strong>{new Date(formData.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</strong>{' '}
+            <strong>{new Date(formData.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</strong>{' '}
             at <strong>{formData.time}</strong>.
           </p>
           <p className="text-ink-600 mb-8">
