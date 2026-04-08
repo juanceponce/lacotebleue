@@ -22,8 +22,11 @@ interface FormErrors {
 }
 
 const timeSlots = [
-  '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM',
-  '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM',
+  '4:00 PM', '4:15 PM', '4:30 PM', '4:45 PM',
+  '5:00 PM', '5:15 PM', '5:30 PM', '5:45 PM',
+  '6:00 PM', '6:15 PM', '6:30 PM', '6:45 PM',
+  '7:00 PM', '7:15 PM', '7:30 PM', '7:45 PM',
+  '8:00 PM', '8:15 PM', '8:30 PM', '8:45 PM',
 ]
 
 const partySizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9+']
@@ -356,7 +359,6 @@ export default function Reserve() {
           <div className="mt-12 text-center">
             <p className="text-ink-600">
               <strong className="text-marine-900">Walk-ins welcome.</strong>
-              {' '}Bar seating is always first-come, first-served.
             </p>
           </div>
         </div>
