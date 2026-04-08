@@ -8,18 +8,18 @@ export default async function handler(req: any, res: any) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const missingVars = ['VITE_SUPABASE_URL', 'VITE_SUPABASE_ANON_KEY', 'RESEND_API_KEY'].filter(
-    v => !process.env[v]
-  )
-  if (missingVars.length > 0) {
-    console.error('Missing env vars:', missingVars)
-    return res.status(500).json({ error: `Missing env vars: ${missingVars.join(', ')}` })
+  const missing = ['SUPABASE_URL', 'SUPABASE_ANON_KEY', 'RESEND_API_KEY'].filter(k => !process.env[k])
+  if (missing.length) {
+    console.error('Missing env vars:', missing.join(', '))
+    return res.status(500).json({ error: `Missing env vars: ${missing.join(', ')}` })
   }
 
   const data = req.body
 
-  // Save to Supabase
-  const supabase = createClient(process.env.VITE_SUPABASE_URL!, process.env.VITE_SUPABASE_ANON_KEY!)
+  const supabase = createClient(
+    process.env.SUPABASE_URL!,
+    process.env.SUPABASE_ANON_KEY!
+  )
   const { error: dbError } = await supabase.from('reservations').insert([{
     name: data.name,
     email: data.email,
