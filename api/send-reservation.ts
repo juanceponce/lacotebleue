@@ -8,7 +8,7 @@ export default async function handler(req: any, res: any) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const missingVars = ['SUPABASE_URL', 'SUPABASE_SERVICE_KEY', 'RESEND_API_KEY'].filter(
+  const missingVars = ['VITE_SUPABASE_URL', 'VITE_SUPABASE_ANON_KEY', 'RESEND_API_KEY'].filter(
     v => !process.env[v]
   )
   if (missingVars.length > 0) {
@@ -19,7 +19,7 @@ export default async function handler(req: any, res: any) {
   const data = req.body
 
   // Save to Supabase
-  const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_KEY!)
+  const supabase = createClient(process.env.VITE_SUPABASE_URL!, process.env.VITE_SUPABASE_ANON_KEY!)
   const { error: dbError } = await supabase.from('reservations').insert([{
     name: data.name,
     email: data.email,
