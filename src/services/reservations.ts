@@ -1,5 +1,3 @@
-import { supabase } from '../lib/supabase'
-
 export interface Reservation {
   name: string
   email: string
@@ -12,21 +10,28 @@ export interface Reservation {
   flexible: boolean
 }
 
-// In-memory fallback for local development without Supabase configured
+// In-memory fallback for local development without API server
 const localStore: Reservation[] = []
 
 export async function submitReservation(data: Reservation): Promise<void> {
-  if (supabase) {
-    const { error } = await supabase.from('reservations').insert([{
-      ...data,
-      status: 'pending',
-    }])
-    if (error) throw new Error(error.message)
-  } else {
-    // Local mock — stores in memory, logs to console
-    localStore.push(data)
-    console.log('[Local mock] Reservation saved:', data)
-    console.log('[Local mock] All reservations:', localStore)
-    await new Promise(res => setTimeout(res, 500)) // simulate network delay
+  try {
+    const res = await fetch('/api/send-reservation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}))
+      throw new Error(err.error || 'Request failed')
+    }
+  } catch (err: any) {
+    // Fallback for local dev without Vercel API server running
+    if (err?.message?.includes('fetch') || err?.message?.includes('Failed to fetch')) {
+      localStore.push(data)
+      console.log('[Local mock] Reservation saved:', data)
+      await new Promise(res => setTimeout(res, 500))
+      return
+    }
+    throw err
   }
 }
