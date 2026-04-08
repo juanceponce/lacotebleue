@@ -1,26 +1,25 @@
 import { Resend } from 'resend'
 import { createClient } from '@supabase/supabase-js'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+export const config = { runtime: 'nodejs' }
 
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_KEY!
-)
-
-export default async function handler(req: Request): Promise<Response> {
+export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405 })
+    return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  let data: any
-  try {
-    data = await req.json()
-  } catch {
-    return new Response('Invalid JSON', { status: 400 })
+  const missingVars = ['SUPABASE_URL', 'SUPABASE_SERVICE_KEY', 'RESEND_API_KEY'].filter(
+    v => !process.env[v]
+  )
+  if (missingVars.length > 0) {
+    console.error('Missing env vars:', missingVars)
+    return res.status(500).json({ error: `Missing env vars: ${missingVars.join(', ')}` })
   }
+
+  const data = req.body
 
   // Save to Supabase
+  const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_KEY!)
   const { error: dbError } = await supabase.from('reservations').insert([{
     name: data.name,
     email: data.email,
@@ -36,82 +35,77 @@ export default async function handler(req: Request): Promise<Response> {
 
   if (dbError) {
     console.error('Supabase error:', dbError)
-    return new Response(JSON.stringify({ error: dbError.message }), { status: 500 })
+    return res.status(500).json({ error: dbError.message })
   }
 
-  const fromAddress = 'La Côte Bleue <team@lacotebleuepg.com>'
-
-  // Guest confirmation email
-  const guestEmail = resend.emails.send({
-    from: fromAddress,
-    to: data.email,
-    subject: 'Reservation Request Received — La Côte Bleue',
-    html: `
-      <div style="font-family: Georgia, serif; max-width: 560px; margin: 0 auto; color: #1a2332;">
-        <div style="background: #1a2332; padding: 32px; text-align: center;">
-          <h1 style="color: #f5f0e8; font-size: 28px; margin: 0; letter-spacing: 0.05em;">La Côte Bleue</h1>
-          <p style="color: #8ba3b8; font-size: 12px; margin: 8px 0 0; letter-spacing: 0.2em; text-transform: uppercase;">Pacific Grove, California</p>
-        </div>
-        <div style="padding: 40px 32px; background: #fdfcf9; border: 1px solid #e8e2d9;">
-          <h2 style="font-size: 22px; color: #1a2332; margin: 0 0 8px;">Thank you, ${data.name.split(' ')[0]}.</h2>
-          <p style="color: #4a5568; line-height: 1.6; margin: 0 0 24px;">We've received your reservation request and will confirm shortly.</p>
-
-          <div style="background: #f0f4f8; border-radius: 8px; padding: 24px; margin-bottom: 24px;">
-            <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
-              <tr><td style="padding: 6px 0; color: #4a5568;">Date</td><td style="padding: 6px 0; font-weight: bold; text-align: right;">${new Date(data.date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</td></tr>
-              <tr><td style="padding: 6px 0; color: #4a5568;">Time</td><td style="padding: 6px 0; font-weight: bold; text-align: right;">${data.time}</td></tr>
-              <tr><td style="padding: 6px 0; color: #4a5568;">Party size</td><td style="padding: 6px 0; font-weight: bold; text-align: right;">${data.party_size} guest${data.party_size > 1 ? 's' : ''}</td></tr>
-              ${data.occasion && data.occasion !== 'No special occasion' ? `<tr><td style="padding: 6px 0; color: #4a5568;">Occasion</td><td style="padding: 6px 0; font-weight: bold; text-align: right;">${data.occasion}</td></tr>` : ''}
-            </table>
-          </div>
-
-          <p style="color: #4a5568; line-height: 1.6; font-size: 14px;">Questions? Reach us at <a href="tel:+18312339286" style="color: #2a5298;">(831) 233-9286</a> or reply to this email.</p>
-        </div>
-        <div style="padding: 20px 32px; text-align: center; background: #f0f4f8;">
-          <p style="font-size: 12px; color: #8ba3b8; margin: 0;">209 Forest Ave, Pacific Grove, CA 93950 &nbsp;·&nbsp; Wed–Mon 4pm–9pm</p>
-        </div>
-      </div>
-    `,
-  })
-
-  // Team notification email
-  const teamEmail = resend.emails.send({
-    from: fromAddress,
-    to: 'team@lacotebleuepg.com',
-    subject: `New Reservation: ${data.name} — ${data.date} at ${data.time}`,
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 560px; margin: 0 auto; color: #1a2332;">
-        <div style="background: #1a2332; padding: 24px 32px;">
-          <h1 style="color: #f5f0e8; font-size: 20px; margin: 0;">New Reservation Request</h1>
-        </div>
-        <div style="padding: 32px; background: #fdfcf9; border: 1px solid #e8e2d9;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
-            <tr><td style="padding: 8px 0; color: #4a5568; width: 120px;">Name</td><td style="padding: 8px 0; font-weight: bold;">${data.name}</td></tr>
-            <tr><td style="padding: 8px 0; color: #4a5568;">Date</td><td style="padding: 8px 0; font-weight: bold;">${new Date(data.date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</td></tr>
-            <tr><td style="padding: 8px 0; color: #4a5568;">Time</td><td style="padding: 8px 0; font-weight: bold;">${data.time}</td></tr>
-            <tr><td style="padding: 8px 0; color: #4a5568;">Party size</td><td style="padding: 8px 0; font-weight: bold;">${data.party_size} guest${data.party_size > 1 ? 's' : ''}</td></tr>
-            <tr><td style="padding: 8px 0; color: #4a5568;">Phone</td><td style="padding: 8px 0;"><a href="tel:${data.phone}" style="color: #2a5298;">${data.phone}</a></td></tr>
-            <tr><td style="padding: 8px 0; color: #4a5568;">Email</td><td style="padding: 8px 0;"><a href="mailto:${data.email}" style="color: #2a5298;">${data.email}</a></td></tr>
-            ${data.occasion && data.occasion !== 'No special occasion' ? `<tr><td style="padding: 8px 0; color: #4a5568;">Occasion</td><td style="padding: 8px 0;">${data.occasion}</td></tr>` : ''}
-            ${data.notes ? `<tr><td style="padding: 8px 0; color: #4a5568;">Notes</td><td style="padding: 8px 0;">${data.notes}</td></tr>` : ''}
-            ${data.flexible ? `<tr><td style="padding: 8px 0; color: #4a5568;">Flexible</td><td style="padding: 8px 0;">Yes</td></tr>` : ''}
-          </table>
-        </div>
-      </div>
-    `,
+  // Send emails
+  const resend = new Resend(process.env.RESEND_API_KEY)
+  const from = 'La Côte Bleue <team@lacotebleuepg.com>'
+  const dateFormatted = new Date(data.date + 'T12:00:00').toLocaleDateString('en-US', {
+    weekday: 'long', month: 'long', day: 'numeric',
   })
 
   try {
-    await Promise.all([guestEmail, teamEmail])
-  } catch (emailError) {
-    console.error('Email error:', emailError)
-    // Don't fail the request — reservation is already saved
+    await Promise.all([
+      resend.emails.send({
+        from,
+        to: data.email,
+        subject: 'Reservation Request Received — La Côte Bleue',
+        html: `
+          <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#1a2332;">
+            <div style="background:#1a2332;padding:32px;text-align:center;">
+              <h1 style="color:#f5f0e8;font-size:28px;margin:0;letter-spacing:0.05em;">La Côte Bleue</h1>
+              <p style="color:#8ba3b8;font-size:12px;margin:8px 0 0;letter-spacing:0.2em;text-transform:uppercase;">Pacific Grove, California</p>
+            </div>
+            <div style="padding:40px 32px;background:#fdfcf9;border:1px solid #e8e2d9;">
+              <h2 style="font-size:22px;color:#1a2332;margin:0 0 8px;">Thank you, ${data.name.split(' ')[0]}.</h2>
+              <p style="color:#4a5568;line-height:1.6;margin:0 0 24px;">We've received your reservation request and will confirm shortly.</p>
+              <div style="background:#f0f4f8;border-radius:8px;padding:24px;margin-bottom:24px;">
+                <table style="width:100%;border-collapse:collapse;font-size:15px;">
+                  <tr><td style="padding:6px 0;color:#4a5568;">Date</td><td style="padding:6px 0;font-weight:bold;text-align:right;">${dateFormatted}</td></tr>
+                  <tr><td style="padding:6px 0;color:#4a5568;">Time</td><td style="padding:6px 0;font-weight:bold;text-align:right;">${data.time}</td></tr>
+                  <tr><td style="padding:6px 0;color:#4a5568;">Party size</td><td style="padding:6px 0;font-weight:bold;text-align:right;">${data.party_size} guest${data.party_size > 1 ? 's' : ''}</td></tr>
+                  ${data.occasion && data.occasion !== 'No special occasion' ? `<tr><td style="padding:6px 0;color:#4a5568;">Occasion</td><td style="padding:6px 0;font-weight:bold;text-align:right;">${data.occasion}</td></tr>` : ''}
+                </table>
+              </div>
+              <p style="color:#4a5568;line-height:1.6;font-size:14px;">Questions? Call us at <a href="tel:+18312339286" style="color:#2a5298;">(831) 233-9286</a> or reply to this email.</p>
+            </div>
+            <div style="padding:20px 32px;text-align:center;background:#f0f4f8;">
+              <p style="font-size:12px;color:#8ba3b8;margin:0;">209 Forest Ave, Pacific Grove, CA 93950 &nbsp;·&nbsp; Wed–Mon 4pm–9pm</p>
+            </div>
+          </div>
+        `,
+      }),
+      resend.emails.send({
+        from,
+        to: 'team@lacotebleuepg.com',
+        subject: `New Reservation: ${data.name} — ${data.date} at ${data.time}`,
+        html: `
+          <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;color:#1a2332;">
+            <div style="background:#1a2332;padding:24px 32px;">
+              <h1 style="color:#f5f0e8;font-size:20px;margin:0;">New Reservation Request</h1>
+            </div>
+            <div style="padding:32px;background:#fdfcf9;border:1px solid #e8e2d9;">
+              <table style="width:100%;border-collapse:collapse;font-size:15px;">
+                <tr><td style="padding:8px 0;color:#4a5568;width:120px;">Name</td><td style="padding:8px 0;font-weight:bold;">${data.name}</td></tr>
+                <tr><td style="padding:8px 0;color:#4a5568;">Date</td><td style="padding:8px 0;font-weight:bold;">${dateFormatted}</td></tr>
+                <tr><td style="padding:8px 0;color:#4a5568;">Time</td><td style="padding:8px 0;font-weight:bold;">${data.time}</td></tr>
+                <tr><td style="padding:8px 0;color:#4a5568;">Party size</td><td style="padding:8px 0;font-weight:bold;">${data.party_size} guest${data.party_size > 1 ? 's' : ''}</td></tr>
+                <tr><td style="padding:8px 0;color:#4a5568;">Phone</td><td style="padding:8px 0;"><a href="tel:${data.phone}" style="color:#2a5298;">${data.phone}</a></td></tr>
+                <tr><td style="padding:8px 0;color:#4a5568;">Email</td><td style="padding:8px 0;"><a href="mailto:${data.email}" style="color:#2a5298;">${data.email}</a></td></tr>
+                ${data.occasion && data.occasion !== 'No special occasion' ? `<tr><td style="padding:8px 0;color:#4a5568;">Occasion</td><td style="padding:8px 0;">${data.occasion}</td></tr>` : ''}
+                ${data.notes ? `<tr><td style="padding:8px 0;color:#4a5568;">Notes</td><td style="padding:8px 0;">${data.notes}</td></tr>` : ''}
+                ${data.flexible ? `<tr><td style="padding:8px 0;color:#4a5568;">Flexible</td><td style="padding:8px 0;">Yes</td></tr>` : ''}
+              </table>
+            </div>
+          </div>
+        `,
+      }),
+    ])
+  } catch (emailError: any) {
+    console.error('Email error:', emailError?.message)
+    // Don't fail — reservation is already saved to DB
   }
 
-  return new Response(JSON.stringify({ success: true }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  })
+  return res.status(200).json({ success: true })
 }
-
-export const config = { runtime: 'edge' }
