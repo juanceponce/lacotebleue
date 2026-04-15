@@ -1,4 +1,4 @@
-import { Resend } from 'resend'
+import nodemailer from 'nodemailer'
 import { createClient } from '@supabase/supabase-js'
 
 export const config = { runtime: 'nodejs' }
@@ -8,7 +8,7 @@ export default async function handler(req: any, res: any) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const missing = ['SUPABASE_URL', 'SUPABASE_ANON_KEY', 'RESEND_API_KEY'].filter(k => !process.env[k])
+  const missing = ['SUPABASE_URL', 'SUPABASE_ANON_KEY', 'GMAIL_USER', 'GMAIL_APP_PASSWORD'].filter(k => !process.env[k])
   if (missing.length) {
     console.error('Missing env vars:', missing.join(', '))
     return res.status(500).json({ error: `Missing env vars: ${missing.join(', ')}` })
@@ -20,6 +20,7 @@ export default async function handler(req: any, res: any) {
     process.env.SUPABASE_URL!,
     process.env.SUPABASE_ANON_KEY!
   )
+
   const { error: dbError } = await supabase.from('reservations').insert([{
     name: data.name,
     email: data.email,
@@ -38,16 +39,22 @@ export default async function handler(req: any, res: any) {
     return res.status(500).json({ error: dbError.message })
   }
 
-  // Send emails
-  const resend = new Resend(process.env.RESEND_API_KEY)
-  const from = 'La Côte Bleue <team@lacotebleuepg.com>'
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  })
+
+  const from = `La Côte Bleue <${process.env.GMAIL_USER}>`
   const dateFormatted = new Date(data.date + 'T12:00:00').toLocaleDateString('en-US', {
     weekday: 'long', month: 'long', day: 'numeric',
   })
 
   try {
     await Promise.all([
-      resend.emails.send({
+      transporter.sendMail({
         from,
         to: data.email,
         subject: 'Reservation Request Received — La Côte Bleue',
@@ -76,9 +83,9 @@ export default async function handler(req: any, res: any) {
           </div>
         `,
       }),
-      resend.emails.send({
+      transporter.sendMail({
         from,
-        to: 'team@lacotebleuepg.com',
+        to: process.env.GMAIL_USER,
         subject: `New Reservation: ${data.name} — ${data.date} at ${data.time}`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;color:#1a2332;">
