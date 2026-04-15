@@ -9,9 +9,9 @@ export default async function handler(req: any, res: any) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const missing = ['SUPABASE_URL', 'SUPABASE_ANON_KEY'].filter(k => !process.env[k])
-  if (missing.length) {
-    return res.status(500).json({ error: `Missing env vars: ${missing.join(', ')}` })
+  const supabaseKey = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ANON_KEY
+  if (!process.env.SUPABASE_URL || !supabaseKey) {
+    return res.status(500).json({ error: 'Missing Supabase config' })
   }
 
   const { id, status } = req.body
@@ -19,10 +19,7 @@ export default async function handler(req: any, res: any) {
     return res.status(400).json({ error: 'Invalid id or status' })
   }
 
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_ANON_KEY!
-  )
+  const supabase = createClient(process.env.SUPABASE_URL, supabaseKey)
 
   const { error } = await supabase
     .from('reservations')

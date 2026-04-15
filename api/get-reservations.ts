@@ -7,9 +7,14 @@ export default async function handler(req: any, res: any) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const missing = ['SUPABASE_URL', 'SUPABASE_ANON_KEY'].filter(k => !process.env[k])
+  const missing = ['SUPABASE_URL'].filter(k => !process.env[k])
   if (missing.length) {
     return res.status(500).json({ error: `Missing env vars: ${missing.join(', ')}` })
+  }
+
+  const supabaseKey = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ANON_KEY
+  if (!supabaseKey) {
+    return res.status(500).json({ error: 'Missing Supabase key' })
   }
 
   const date = req.query.date as string
@@ -17,10 +22,7 @@ export default async function handler(req: any, res: any) {
     return res.status(400).json({ error: 'Invalid or missing date param (YYYY-MM-DD)' })
   }
 
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_ANON_KEY!
-  )
+  const supabase = createClient(process.env.SUPABASE_URL!, supabaseKey)
 
   const { data, error } = await supabase
     .from('reservations')
