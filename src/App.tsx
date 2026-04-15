@@ -7,6 +7,7 @@ import Reserve from './pages/Reserve'
 import Story from './pages/Story'
 import Events from './pages/Events'
 import Contact from './pages/Contact'
+import Admin from './pages/Admin'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -32,6 +33,7 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </>
   )
