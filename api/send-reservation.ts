@@ -53,10 +53,10 @@ export default async function handler(req: any, res: any) {
   })
 
   try {
-    await Promise.all([
-      transporter.sendMail({
+    await transporter.sendMail({
         from,
         to: data.email,
+        cc: 'team@lacotebleuepg.com',
         subject: 'Reservation Request Received — La Côte Bleue',
         html: `
           <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#1a2332;">
@@ -82,33 +82,7 @@ export default async function handler(req: any, res: any) {
             </div>
           </div>
         `,
-      }),
-      transporter.sendMail({
-        from,
-        to: process.env.GMAIL_USER,
-        subject: `New Reservation: ${data.name} — ${data.date} at ${data.time}`,
-        html: `
-          <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;color:#1a2332;">
-            <div style="background:#1a2332;padding:24px 32px;">
-              <h1 style="color:#f5f0e8;font-size:20px;margin:0;">New Reservation Request</h1>
-            </div>
-            <div style="padding:32px;background:#fdfcf9;border:1px solid #e8e2d9;">
-              <table style="width:100%;border-collapse:collapse;font-size:15px;">
-                <tr><td style="padding:8px 0;color:#4a5568;width:120px;">Name</td><td style="padding:8px 0;font-weight:bold;">${data.name}</td></tr>
-                <tr><td style="padding:8px 0;color:#4a5568;">Date</td><td style="padding:8px 0;font-weight:bold;">${dateFormatted}</td></tr>
-                <tr><td style="padding:8px 0;color:#4a5568;">Time</td><td style="padding:8px 0;font-weight:bold;">${data.time}</td></tr>
-                <tr><td style="padding:8px 0;color:#4a5568;">Party size</td><td style="padding:8px 0;font-weight:bold;">${data.party_size} guest${data.party_size > 1 ? 's' : ''}</td></tr>
-                <tr><td style="padding:8px 0;color:#4a5568;">Phone</td><td style="padding:8px 0;"><a href="tel:${data.phone}" style="color:#2a5298;">${data.phone}</a></td></tr>
-                <tr><td style="padding:8px 0;color:#4a5568;">Email</td><td style="padding:8px 0;"><a href="mailto:${data.email}" style="color:#2a5298;">${data.email}</a></td></tr>
-                ${data.occasion && data.occasion !== 'No special occasion' ? `<tr><td style="padding:8px 0;color:#4a5568;">Occasion</td><td style="padding:8px 0;">${data.occasion}</td></tr>` : ''}
-                ${data.notes ? `<tr><td style="padding:8px 0;color:#4a5568;">Notes</td><td style="padding:8px 0;">${data.notes}</td></tr>` : ''}
-                ${data.flexible ? `<tr><td style="padding:8px 0;color:#4a5568;">Flexible</td><td style="padding:8px 0;">Yes</td></tr>` : ''}
-              </table>
-            </div>
-          </div>
-        `,
-      }),
-    ])
+    })
   } catch (emailError: any) {
     console.error('Email error:', emailError?.message)
     // Don't fail — reservation is already saved to DB
