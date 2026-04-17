@@ -152,6 +152,9 @@ export default function Reserve() {
     }
   }
 
+  const NEAR_FULL_DATE = '2026-04-17'
+  const isNearFullDate = formData.date === NEAR_FULL_DATE
+
   if (submitted) {
     return (
       <div className="page-transition min-h-[80vh] flex items-center justify-center py-20 px-6 bg-sand-50">
@@ -220,19 +223,50 @@ export default function Reserve() {
       {/* Reservation Form */}
       <section className="section-padding bg-sand-50">
         <div className="max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-8">
+          {/* Date is always visible so the user can change it */}
+          <div className="mb-8">
+            <FormField
+              label="Date"
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={(e) => updateField('date', (e.target as HTMLInputElement).value)}
+              min={new Date().toISOString().split('T')[0]}
+              error={errors.date}
+              required
+            />
+          </div>
+
+          {isNearFullDate && (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" />
+                </svg>
+              </div>
+              <h2 className="font-serif text-2xl md:text-3xl text-marine-900 mb-4">
+                Reservations Nearly Full
+              </h2>
+              <p className="text-ink-600 mb-6 max-w-md mx-auto">
+                Friday, April 17th is nearly fully booked. Please call us directly to check availability and secure your table.
+              </p>
+              <a
+                href="tel:8312339286"
+                className="inline-flex items-center gap-2 bg-marine-900 text-sand-50 px-8 py-4 rounded-lg font-medium text-lg hover:bg-marine-800 transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 8V5z" />
+                </svg>
+                (831) 233-9286
+              </a>
+              <p className="text-ink-500 text-sm mt-6">
+                Select a different date above to book online.
+              </p>
+            </div>
+          )}
+          {!isNearFullDate && <form onSubmit={handleSubmit} className="space-y-8">
             {/* Date & Time */}
             <div className="grid md:grid-cols-2 gap-6">
-              <FormField
-                label="Date"
-                type="date"
-                name="date"
-                value={formData.date}
-                onChange={(e) => updateField('date', (e.target as HTMLInputElement).value)}
-                min={new Date().toISOString().split('T')[0]}
-                error={errors.date}
-                required
-              />
               <FormField
                 as="select"
                 label="Time"
@@ -369,7 +403,7 @@ export default function Reserve() {
             <Button type="submit" size="lg" className="w-full" disabled={submitting}>
               {submitting ? 'Submitting...' : 'Request Reservation'}
             </Button>
-          </form>
+          </form>}
 
           {/* Walk-ins Note */}
           <div className="mt-12 text-center">
