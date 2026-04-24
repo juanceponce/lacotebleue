@@ -152,8 +152,18 @@ export default function Reserve() {
     }
   }
 
-  const NEAR_FULL_DATE = '2026-04-17'
-  const isNearFullDate = formData.date === NEAR_FULL_DATE
+  const NEAR_FULL_DATES: Record<string, { heading: string; body: string }> = {
+    '2026-04-17': {
+      heading: 'Reservations Nearly Full',
+      body: 'Friday, April 17th is nearly fully booked. Please call us directly to check availability and secure your table.',
+    },
+    '2026-04-24': {
+      heading: 'Reservations Tonight by Phone Only',
+      body: 'We are taking remaining reservations for tonight, Friday April 24th, by phone. Please call us to check availability and secure your table.',
+    },
+  }
+  const nearFullInfo = NEAR_FULL_DATES[formData.date]
+  const isNearFullDate = !!nearFullInfo
 
   if (submitted) {
     return (
@@ -245,10 +255,10 @@ export default function Reserve() {
                 </svg>
               </div>
               <h2 className="font-serif text-2xl md:text-3xl text-marine-900 mb-4">
-                Reservations Nearly Full
+                {nearFullInfo.heading}
               </h2>
               <p className="text-ink-600 mb-6 max-w-md mx-auto">
-                Friday, April 17th is nearly fully booked. Please call us directly to check availability and secure your table.
+                {nearFullInfo.body}
               </p>
               <a
                 href="tel:8312339286"
