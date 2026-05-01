@@ -152,6 +152,11 @@ export default function Reserve() {
     }
   }
 
+  const RESTRICTED_UNTIL_7PM = ['2026-04-29', '2026-04-30']
+  const isRestrictedDate = RESTRICTED_UNTIL_7PM.includes(formData.date)
+
+  const isMay2 = formData.date === '2026-05-02'
+
   const NEAR_FULL_DATES: Record<string, { heading: string; body: string }> = {
     '2026-04-17': {
       heading: 'Reservations Nearly Full',
@@ -275,6 +280,16 @@ export default function Reserve() {
             </div>
           )}
           {!isNearFullDate && <form onSubmit={handleSubmit} className="space-y-8">
+            {isRestrictedDate && (
+              <div className="bg-amber-50 border border-amber-200 rounded-xl px-6 py-4 text-amber-800 text-sm">
+                Online reservations for this evening are available starting at <strong>7:00 PM</strong>. For earlier times, please call us at <a href="tel:8312339286" className="underline font-medium">(831) 233-9286</a>.
+              </div>
+            )}
+            {isMay2 && (
+              <div className="bg-amber-50 border border-amber-200 rounded-xl px-6 py-4 text-amber-800 text-sm">
+                Online reservations for <strong>4:30–6:30 PM</strong> on Saturday, May 2nd are unavailable. Times starting at <strong>6:45 PM</strong> are open online, or call us at <a href="tel:8312339286" className="underline font-medium">(831) 233-9286</a> for earlier availability.
+              </div>
+            )}
             {/* Date & Time */}
             <div className="grid md:grid-cols-2 gap-6">
               <FormField
@@ -288,10 +303,13 @@ export default function Reserve() {
               >
                 <option value="">Select a time</option>
                 {timeSlots.filter(time => {
-                  if (formData.date !== new Date().toISOString().split('T')[0]) return true
                   const [t, meridiem] = time.split(' ')
                   const [hours, minutes] = t.split(':').map(Number)
                   const slotHour = meridiem === 'PM' && hours !== 12 ? hours + 12 : hours
+                  const slotTotal = slotHour * 60 + minutes
+                  if (isRestrictedDate && slotHour < 19) return false
+                  if (isMay2 && slotTotal >= 16 * 60 + 30 && slotTotal <= 18 * 60 + 30) return false
+                  if (formData.date !== new Date().toISOString().split('T')[0]) return true
                   const now = new Date()
                   return slotHour > now.getHours() || (slotHour === now.getHours() && Number(minutes) > now.getMinutes())
                 }).map(time => (
