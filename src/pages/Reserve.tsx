@@ -164,10 +164,6 @@ export default function Reserve() {
       heading: 'Reservations Tonight by Phone Only',
       body: 'We are taking remaining reservations for tonight, Friday April 24th, by phone. Please call us to check availability and secure your table.',
     },
-    '2026-05-02': {
-      heading: 'Reservations by Phone Only',
-      body: 'Online reservations for Saturday, May 2nd are unavailable. Please call us to check availability and secure your table.',
-    },
   }
   const nearFullInfo = NEAR_FULL_DATES[formData.date]
   const isNearFullDate = !!nearFullInfo
@@ -304,7 +300,7 @@ export default function Reserve() {
                   const [hours, minutes] = t.split(':').map(Number)
                   const slotHour = meridiem === 'PM' && hours !== 12 ? hours + 12 : hours
                   if (isRestrictedDate && slotHour < 19) return false
-
+                  if (formData.date === '2026-05-02' && time === '6:30 PM') return false
                   if (formData.date !== new Date().toISOString().split('T')[0]) return true
                   const now = new Date()
                   return slotHour > now.getHours() || (slotHour === now.getHours() && Number(minutes) > now.getMinutes())
