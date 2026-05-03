@@ -31,6 +31,11 @@ const timeSlots = [
 
 const partySizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9+']
 
+const localDateString = () => {
+  const d = new Date()
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+
 const occasions = [
   'No special occasion',
   'Birthday',
@@ -76,7 +81,7 @@ export default function Reserve() {
 
     if (!formData.time) {
       newErrors.time = 'Please select a time'
-    } else if (formData.date === new Date().toISOString().split('T')[0]) {
+    } else if (formData.date === localDateString()) {
       const [time, meridiem] = formData.time.split(' ')
       const [hours, minutes] = time.split(':').map(Number)
       const slotHour = meridiem === 'PM' && hours !== 12 ? hours + 12 : hours
@@ -244,7 +249,7 @@ export default function Reserve() {
               name="date"
               value={formData.date}
               onChange={(e) => updateField('date', (e.target as HTMLInputElement).value)}
-              min={new Date().toISOString().split('T')[0]}
+              min={localDateString()}
               error={errors.date}
               required
             />
@@ -300,8 +305,8 @@ export default function Reserve() {
                   const [hours, minutes] = t.split(':').map(Number)
                   const slotHour = meridiem === 'PM' && hours !== 12 ? hours + 12 : hours
                   if (isRestrictedDate && slotHour < 19) return false
-                  if (formData.date === '2026-05-02' && time === '6:30 PM') return false
-                  if (formData.date !== new Date().toISOString().split('T')[0]) return true
+                  if (formData.date === '2026-05-02' && (time === '6:00 PM' || time === '6:15 PM' || time === '6:30 PM')) return false
+                  if (formData.date !== localDateString()) return true
                   const now = new Date()
                   return slotHour > now.getHours() || (slotHour === now.getHours() && Number(minutes) > now.getMinutes())
                 }).map(time => (

@@ -6,7 +6,24 @@
       "Bash(npm run build:*)",
       "Bash(npm run dev:*)",
       "Bash(npm start:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npm audit:*)",
+      "Bash(vercel env:*)",
+      "Bash(tail:*)",
+      "Bash(vercel project:*)",
+      "Bash(vercel link:*)",
+      "Bash(vercel domains *)",
+      "Bash(vercel dns *)",
+      "Bash(vercel --cwd . project ls)",
+      "Bash(dig lacotebleuepg.com A +short)",
+      "Bash(dig www.lacotebleuepg.com A +short)",
+      "Bash(vercel *)",
+      "Bash(npm uninstall *)",
+      "Bash(curl *)",
+      "Bash(npx vite *)"
     ]
   }
 }
