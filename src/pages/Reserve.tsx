@@ -157,7 +157,7 @@ export default function Reserve() {
     }
   }
 
-  const RESTRICTED_UNTIL_7PM = ['2026-04-29', '2026-04-30']
+  const RESTRICTED_UNTIL_7PM = ['2026-04-29', '2026-04-30', '2026-05-23']
   const isRestrictedDate = RESTRICTED_UNTIL_7PM.includes(formData.date)
 
   const NEAR_FULL_DATES: Record<string, { heading: string; body: string }> = {
