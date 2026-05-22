@@ -141,7 +141,7 @@ export default function Reserve() {
         })
 
         if (formData.flexible) {
-          const slots = isSaturday(formData.date) ? lunchTimeSlots : timeSlots
+          const slots = isSaturday(formData.date) ? [...lunchTimeSlots, ...timeSlots] : timeSlots
           const timeIndex = slots.indexOf(formData.time)
           const alternatives = slots
             .filter((_, i) => Math.abs(i - timeIndex) <= 2 && i !== timeIndex)
@@ -295,7 +295,7 @@ export default function Reserve() {
             </div>
           )}
           {!isNearFullDate && <form onSubmit={handleSubmit} className="space-y-8">
-            {isRestrictedDate && (
+            {isRestrictedDate && !isSaturday(formData.date) && (
               <div className="bg-amber-50 border border-amber-200 rounded-xl px-6 py-4 text-amber-800 text-sm">
                 Online reservations for this evening are available starting at <strong>7:00 PM</strong>. For earlier times, please call us at <a href="tel:8312339286" className="underline font-medium">(831) 233-9286</a>.
               </div>
@@ -312,13 +312,14 @@ export default function Reserve() {
                 required
               >
                 <option value="">Select a time</option>
-                {(isSaturday(formData.date) ? lunchTimeSlots : timeSlots).filter(time => {
+                {(isSaturday(formData.date) ? [...lunchTimeSlots, ...timeSlots] : timeSlots).filter(time => {
                   const [t, meridiem] = time.split(' ')
                   const [hours, minutes] = t.split(':').map(Number)
                   const slotHour = meridiem === 'PM' && hours !== 12 ? hours + 12 : (meridiem === 'AM' && hours === 12 ? 0 : hours)
-                  if (isRestrictedDate && slotHour < 19) return false
+                  if (isRestrictedDate && !isSaturday(formData.date) && slotHour < 19) return false
                   if (formData.date === '2026-05-02' && (time === '6:00 PM' || time === '6:15 PM' || time === '6:30 PM')) return false
                   if (formData.date === '2026-05-09' && (time === '6:30 PM' || time === '7:00 PM')) return false
+                  if (formData.date === '2026-05-23' && slotHour >= 16 && slotHour < 19) return false
                   if (formData.date !== localDateString()) return true
                   const now = new Date()
                   return slotHour > now.getHours() || (slotHour === now.getHours() && Number(minutes) > now.getMinutes())
