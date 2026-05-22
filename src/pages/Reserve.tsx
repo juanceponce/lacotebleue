@@ -29,6 +29,17 @@ const timeSlots = [
   '8:00 PM', '8:15 PM', '8:30 PM', '8:45 PM',
 ]
 
+const lunchTimeSlots = [
+  '11:00 AM', '11:30 AM',
+  '12:00 PM', '12:30 PM',
+  '1:00 PM', '1:30 PM',
+  '2:00 PM', '2:30 PM',
+  '3:00 PM',
+]
+
+const isSaturday = (dateStr: string) =>
+  !!dateStr && new Date(dateStr + 'T12:00:00').getDay() === 6
+
 const partySizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9+']
 
 const localDateString = () => {
@@ -130,8 +141,9 @@ export default function Reserve() {
         })
 
         if (formData.flexible) {
-          const timeIndex = timeSlots.indexOf(formData.time)
-          const alternatives = timeSlots
+          const slots = isSaturday(formData.date) ? lunchTimeSlots : timeSlots
+          const timeIndex = slots.indexOf(formData.time)
+          const alternatives = slots
             .filter((_, i) => Math.abs(i - timeIndex) <= 2 && i !== timeIndex)
             .slice(0, 3)
           setSuggestedTimes(alternatives)
@@ -300,10 +312,10 @@ export default function Reserve() {
                 required
               >
                 <option value="">Select a time</option>
-                {timeSlots.filter(time => {
+                {(isSaturday(formData.date) ? lunchTimeSlots : timeSlots).filter(time => {
                   const [t, meridiem] = time.split(' ')
                   const [hours, minutes] = t.split(':').map(Number)
-                  const slotHour = meridiem === 'PM' && hours !== 12 ? hours + 12 : hours
+                  const slotHour = meridiem === 'PM' && hours !== 12 ? hours + 12 : (meridiem === 'AM' && hours === 12 ? 0 : hours)
                   if (isRestrictedDate && slotHour < 19) return false
                   if (formData.date === '2026-05-02' && (time === '6:00 PM' || time === '6:15 PM' || time === '6:30 PM')) return false
                   if (formData.date === '2026-05-09' && (time === '6:30 PM' || time === '7:00 PM')) return false
