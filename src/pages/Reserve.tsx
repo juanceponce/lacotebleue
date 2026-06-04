@@ -40,6 +40,12 @@ const lunchTimeSlots = [
 const isSaturday = (dateStr: string) =>
   !!dateStr && new Date(dateStr + 'T12:00:00').getDay() === 6
 
+const isTuesday = (dateStr: string) =>
+  !!dateStr && new Date(dateStr + 'T12:00:00').getDay() === 2
+
+const isFriday = (dateStr: string) =>
+  !!dateStr && new Date(dateStr + 'T12:00:00').getDay() === 5
+
 const partySizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9+']
 
 const localDateString = () => {
@@ -87,6 +93,8 @@ export default function Reserve() {
       today.setHours(0, 0, 0, 0)
       if (selectedDate < today) {
         newErrors.date = 'Please select today or a future date'
+      } else if (isTuesday(formData.date)) {
+        newErrors.date = 'We are closed on Tuesdays — please select another day'
       }
     }
 
@@ -141,7 +149,7 @@ export default function Reserve() {
         })
 
         if (formData.flexible) {
-          const slots = isSaturday(formData.date) ? [...lunchTimeSlots, ...timeSlots] : timeSlots
+          const slots = (isSaturday(formData.date) || isFriday(formData.date) || formData.date > '2026-06-04') ? [...lunchTimeSlots, ...timeSlots] : timeSlots
           const timeIndex = slots.indexOf(formData.time)
           const alternatives = slots
             .filter((_, i) => Math.abs(i - timeIndex) <= 2 && i !== timeIndex)
@@ -171,6 +179,7 @@ export default function Reserve() {
 
   const RESTRICTED_UNTIL_7PM = ['2026-04-29', '2026-04-30', '2026-05-23']
   const isRestrictedDate = RESTRICTED_UNTIL_7PM.includes(formData.date)
+  const isClosedDay = isTuesday(formData.date)
 
   const NEAR_FULL_DATES: Record<string, { heading: string; body: string }> = {
     '2026-04-17': {
@@ -267,6 +276,22 @@ export default function Reserve() {
             />
           </div>
 
+          {isClosedDay && (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 rounded-full bg-sand-200 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-ink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h2 className="font-serif text-2xl md:text-3xl text-marine-900 mb-4">
+                Closed on Tuesdays
+              </h2>
+              <p className="text-ink-600 mb-6 max-w-md mx-auto">
+                We are closed every Tuesday. Please select another day to make a reservation.
+              </p>
+            </div>
+          )}
+
           {isNearFullDate && (
             <div className="text-center py-12">
               <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-6">
@@ -294,8 +319,8 @@ export default function Reserve() {
               </p>
             </div>
           )}
-          {!isNearFullDate && <form onSubmit={handleSubmit} className="space-y-8">
-            {isRestrictedDate && !isSaturday(formData.date) && (
+          {!isClosedDay && !isNearFullDate && <form onSubmit={handleSubmit} className="space-y-8">
+            {isRestrictedDate && !isSaturday(formData.date) && !isFriday(formData.date) && (
               <div className="bg-amber-50 border border-amber-200 rounded-xl px-6 py-4 text-amber-800 text-sm">
                 Online reservations for this evening are available starting at <strong>7:00 PM</strong>. For earlier times, please call us at <a href="tel:8312339286" className="underline font-medium">(831) 233-9286</a>.
               </div>
@@ -312,11 +337,11 @@ export default function Reserve() {
                 required
               >
                 <option value="">Select a time</option>
-                {(isSaturday(formData.date) ? [...lunchTimeSlots, ...timeSlots] : timeSlots).filter(time => {
+                {((isSaturday(formData.date) || isFriday(formData.date) || formData.date > '2026-06-04') ? [...lunchTimeSlots, ...timeSlots] : timeSlots).filter(time => {
                   const [t, meridiem] = time.split(' ')
                   const [hours, minutes] = t.split(':').map(Number)
                   const slotHour = meridiem === 'PM' && hours !== 12 ? hours + 12 : (meridiem === 'AM' && hours === 12 ? 0 : hours)
-                  if (isRestrictedDate && !isSaturday(formData.date) && slotHour < 19) return false
+                  if (isRestrictedDate && !isSaturday(formData.date) && !isFriday(formData.date) && slotHour < 19) return false
                   if (formData.date === '2026-05-02' && (time === '6:00 PM' || time === '6:15 PM' || time === '6:30 PM')) return false
                   if (formData.date === '2026-05-09' && (time === '6:30 PM' || time === '7:00 PM')) return false
                   if (formData.date === '2026-05-23' && (time === '6:00 PM' || time === '7:00 PM')) return false
