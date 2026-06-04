@@ -145,6 +145,20 @@
           "description": "Lettuce, creamy avocado herb dressing with tarragon, lemon, and garlic",
           "price": 16,
           "dietary": ["vegetarian", "gluten-free"]
+        },
+        {
+          "id": "47",
+          "name": "Farmers Market",
+          "description": "",
+          "price": 16,
+          "dietary": ["vegan"]
+        },
+        {
+          "id": "48",
+          "name": "Tofu Dolma Verde",
+          "description": "Kale-wrapped tofu, mojo verde, roasted vegetables, cashew romesco",
+          "price": 16,
+          "dietary": ["vegan", "gluten-free"]
         }
       ]
     },

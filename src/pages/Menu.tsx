@@ -98,6 +98,78 @@ export default function Menu() {
         </section>
       )}
 
+      {/* Lunch Highlights */}
+      <section className="bg-sand-100 border-b border-sand-200 py-8 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-2 h-2 rounded-full bg-amber-400" />
+            <h2 className="font-serif text-xl text-marine-900">Lunch Highlights</h2>
+          </div>
+          <div className="space-y-4">
+            <div>
+              <p className="text-xs font-semibold tracking-wider uppercase text-ink-400 mb-2">Starters</p>
+              <div className="flex flex-wrap gap-3">
+              {[
+                { name: 'Oysters', price: 16 },
+                { name: 'BBQ Oysters', price: 16 },
+                { name: 'Little Neck Clams', price: 12 },
+                { name: 'Fritto Misto', price: 16 },
+              ].map(item => (
+                <span
+                  key={item.name}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-sand-200 text-sm"
+                >
+                  <span className="font-medium text-marine-900">{item.name}</span>
+                  <span className="text-ink-500">${item.price}</span>
+                </span>
+              ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-xs font-semibold tracking-wider uppercase text-ink-400 mb-2">Plant</p>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { name: 'House Salad', price: 16 },
+                  { name: 'Green Goddess', price: 16 },
+                  { name: 'Farmers Market', price: 16 },
+                  { name: 'Tofu Dolma Verde', price: 16 },
+                ].map(item => (
+                  <span
+                    key={item.name}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-sand-200 text-sm"
+                  >
+                    <span className="font-medium text-marine-900">{item.name}</span>
+                    <span className="text-ink-500">${item.price}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-xs font-semibold tracking-wider uppercase text-ink-400 mb-2">Sea & Land</p>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { name: 'French Dip', price: 18 },
+                  { name: 'Fish & Chips', price: 21 },
+                  { name: 'Steak Frites', price: 18 },
+                  { name: 'Crevette Frites', price: 18 },
+                  { name: 'Herb Crusted Cod', price: 25 },
+                  { name: 'Sea Harvest Pasta', price: 28 },
+                  { name: 'French Bucatini', price: 31 },
+                ].map(item => (
+                  <span
+                    key={item.name}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-sand-200 text-sm"
+                  >
+                    <span className="font-medium text-marine-900">{item.name}</span>
+                    <span className="text-ink-500">${item.price}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Filters */}
       <section className="sticky top-20 z-40 bg-sand-50/95 backdrop-blur-sm border-b border-sand-200 py-4 px-6">
         <div className="max-w-6xl mx-auto">
