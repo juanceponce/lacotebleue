@@ -32,33 +32,33 @@ export function Footer() {
           <div>
             <h3 className="font-serif text-lg mb-4">Hours</h3>
             <dl className="space-y-2 text-sm text-sand-300">
-              <div className="flex justify-between">
+              <div className="flex justify-between items-start">
                 <dt>Monday</dt>
-                <dd>4pm – 9pm</dd>
+                <dd className="text-right">11am – 3pm<br />4pm – 9pm</dd>
               </div>
               <div className="flex justify-between">
                 <dt>Tuesday</dt>
                 <dd>Closed</dd>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-start">
                 <dt>Wednesday</dt>
-                <dd>4pm – 9pm</dd>
+                <dd className="text-right">11am – 3pm<br />4pm – 9pm</dd>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-start">
                 <dt>Thursday</dt>
-                <dd>4pm – 9pm</dd>
+                <dd className="text-right">11am – 3pm<br />4pm – 9pm</dd>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-start">
                 <dt>Friday</dt>
-                <dd>4pm – 9pm</dd>
+                <dd className="text-right">11am – 3pm<br />4pm – 9pm</dd>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-start">
                 <dt>Saturday</dt>
-                <dd>4pm – 9pm</dd>
+                <dd className="text-right">11am – 3pm<br />4pm – 9pm</dd>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-start">
                 <dt>Sunday</dt>
-                <dd>4pm – 9pm</dd>
+                <dd className="text-right">11am – 3pm<br />4pm – 9pm</dd>
               </div>
             </dl>
           </div>
