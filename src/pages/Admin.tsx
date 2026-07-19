@@ -189,7 +189,9 @@ function Dashboard() {
     reservations: reservations.filter(r => parseHour(r.time) === block.hour),
   }))
 
-  const totalGuests = reservations.reduce((sum, r) => sum + r.party_size, 0)
+  const totalGuests = reservations
+    .filter(r => r.status === 'pending' || r.status === 'confirmed')
+    .reduce((sum, r) => sum + r.party_size, 0)
 
   return (
     <div className="min-h-screen bg-sand-100 font-sans">
@@ -276,7 +278,9 @@ function Dashboard() {
                   <span className="text-xs text-ink-400">
                     {block.reservations.length} table{block.reservations.length !== 1 ? 's' : ''}
                     &nbsp;&middot;&nbsp;
-                    {block.reservations.reduce((s, r) => s + r.party_size, 0)} guests
+                    {block.reservations
+                      .filter(r => r.status === 'pending' || r.status === 'confirmed')
+                      .reduce((s, r) => s + r.party_size, 0)} guests
                   </span>
                 </div>
 
