@@ -350,6 +350,7 @@ export default function Reserve() {
                   if (formData.date === '2026-07-16' && (time === '6:00 PM' || time === '6:15 PM' || time === '6:30 PM' || time === '6:45 PM')) return false
                   if (formData.date === '2026-07-17' && (time === '6:00 PM' || time === '6:15 PM' || time === '6:30 PM' || time === '6:45 PM' || time === '7:00 PM')) return false
                   if (formData.date === '2026-07-18' && (time === '5:00 PM' || time === '5:30 PM' || time === '5:45 PM')) return false
+                  if (formData.date === '2026-07-19' && (time === '6:00 PM' || time === '6:15 PM' || time === '6:30 PM' || time === '6:45 PM')) return false
                   if (formData.date !== localDateString()) return true
                   const now = new Date()
                   return slotHour > now.getHours() || (slotHour === now.getHours() && Number(minutes) > now.getMinutes())
