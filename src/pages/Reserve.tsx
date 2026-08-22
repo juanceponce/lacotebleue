@@ -190,6 +190,10 @@ export default function Reserve() {
       heading: 'Reservations Tonight by Phone Only',
       body: 'We are taking remaining reservations for tonight, Friday April 24th, by phone. Please call us to check availability and secure your table.',
     },
+    '2026-08-22': {
+      heading: 'No Availability Today',
+      body: 'We have no seating available for today. We would love to have you another day — please select a different date above.',
+    },
   }
   const nearFullInfo = NEAR_FULL_DATES[formData.date]
   const isNearFullDate = !!nearFullInfo
