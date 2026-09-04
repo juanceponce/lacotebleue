@@ -194,6 +194,10 @@ export default function Reserve() {
       heading: 'No Availability Today',
       body: 'We have no seating available for today. We would love to have you another day — please select a different date above.',
     },
+    '2026-09-04': {
+      heading: 'No Availability Today',
+      body: 'We have no seating available for today. We would love to have you another day — please select a different date above.',
+    },
   }
   const nearFullInfo = NEAR_FULL_DATES[formData.date]
   const isNearFullDate = !!nearFullInfo
