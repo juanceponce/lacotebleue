@@ -8,6 +8,7 @@ import Story from './pages/Story'
 import Events from './pages/Events'
 import Contact from './pages/Contact'
 import Admin from './pages/Admin'
+import Pending from './pages/Pending'
 import Info from './pages/Info'
 
 function ScrollToTop() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Route>
         <Route path="/admin" element={<Admin />} />
+        <Route path="/pending" element={<Pending />} />
         <Route path="/info" element={<Info />} />
       </Routes>
     </>
