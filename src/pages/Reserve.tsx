@@ -198,6 +198,10 @@ export default function Reserve() {
       heading: 'No Availability Today',
       body: 'We have no seating available for today. We would love to have you another day — please select a different date above.',
     },
+    '2026-10-10': {
+      heading: 'No Availability Today',
+      body: 'We have no seating available for today. We would love to have you another day — please select a different date above.',
+    },
   }
   const nearFullInfo = NEAR_FULL_DATES[formData.date]
   const isNearFullDate = !!nearFullInfo
@@ -364,7 +368,6 @@ export default function Reserve() {
                   if (formData.date === '2026-08-15' && (time === '6:00 PM' || time === '6:15 PM' || time === '6:30 PM' || time === '6:45 PM' || time === '7:00 PM')) return false
                   if (formData.date === '2026-08-29' && (time === '6:00 PM' || time === '6:15 PM' || time === '6:30 PM' || time === '6:45 PM' || time === '7:00 PM')) return false
                   if (formData.date === '2026-09-04' && (time === '6:00 PM' || time === '6:15 PM' || time === '6:30 PM' || time === '6:45 PM' || time === '7:00 PM')) return false
-                  if (formData.date === '2026-10-10' && (time === '6:00 PM' || time === '6:15 PM' || time === '6:30 PM' || time === '6:45 PM' || time === '7:00 PM' || time === '7:15 PM' || time === '7:30 PM' || time === '7:45 PM' || time === '8:00 PM')) return false
                   if (formData.date !== localDateString()) return true
                   const now = new Date()
                   return slotHour > now.getHours() || (slotHour === now.getHours() && Number(minutes) > now.getMinutes())
