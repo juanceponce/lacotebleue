@@ -30,6 +30,8 @@ function formatDisplayDate(dateStr: string): string {
   })
 }
 
+const toLocalDateString = (d: Date) => d.toLocaleDateString('en-CA')
+
 export default function Pending() {
   const [authed, setAuthed] = useState(() => sessionStorage.getItem('admin_authed') === '1')
 
@@ -46,7 +48,7 @@ function PendingTable() {
   const fetchReservations = useCallback(() => {
     setLoading(true)
     setError('')
-    fetch('/api/get-pending-reservations')
+    fetch(`/api/get-pending-reservations?from=${toLocalDateString(new Date())}`)
       .then(r => r.json())
       .then(data => {
         if (data.error) throw new Error(data.error)

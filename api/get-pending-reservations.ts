@@ -19,11 +19,18 @@ export default async function handler(req: any, res: any) {
 
   const supabase = createClient(process.env.SUPABASE_URL!, supabaseKey)
 
-  const { data, error } = await supabase
+  let query = supabase
     .from('reservations')
     .select('id, name, party_size, date, time, occasion, status, notes, phone, email, flexible')
     .eq('status', 'pending')
     .order('date', { ascending: true })
+
+  const from = req.query.from as string
+  if (from && /^\d{4}-\d{2}-\d{2}$/.test(from)) {
+    query = query.gte('date', from)
+  }
+
+  const { data, error } = await query
 
   if (error) {
     console.error('Supabase error:', error)
