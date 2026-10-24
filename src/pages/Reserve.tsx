@@ -204,7 +204,7 @@ export default function Reserve() {
     },
     '2026-11-26': {
       heading: 'Thanksgiving Dining Is Nearly Booked',
-      body: 'Indoor dining for Thanksgiving is nearly full. Take-home orders open Sunday, October 25 at 10:00 AM — please check back then. We will accept take-home orders until Wednesday, November 25.',
+      body: 'Indoor dining for Thanksgiving is nearly full. Take-home orders open Sunday, October 25 at 10:00 AM — please check back then.\nWe will accept take-home orders until Wednesday, November 25.',
     },
   }
   const nearFullInfo = NEAR_FULL_DATES[formData.date]
@@ -318,7 +318,7 @@ export default function Reserve() {
               <h2 className="font-serif text-2xl md:text-3xl text-marine-900 mb-4">
                 {nearFullInfo.heading}
               </h2>
-              <p className="text-ink-600 mb-6 max-w-md mx-auto">
+              <p className="text-ink-600 mb-6 max-w-md mx-auto whitespace-pre-line">
                 {nearFullInfo.body}
               </p>
               <a
