@@ -203,7 +203,7 @@ export default function Reserve() {
       body: 'We have no seating available for today. We would love to have you another day — please select a different date above.',
     },
     '2026-11-26': {
-      heading: 'Please Check Back Sunday, October 25 at 10:00 AM',
+      heading: 'For Thanksgiving Take-Home, Please Check Back Sunday, October 25 at 10:00 AM',
       body: 'We are nearly booked out for indoor dining, but we will be accepting takeout reservations until Wednesday, November 25th.',
     },
   }
