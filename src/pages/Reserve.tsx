@@ -203,8 +203,8 @@ export default function Reserve() {
       body: 'We have no seating available for today. We would love to have you another day — please select a different date above.',
     },
     '2026-11-26': {
-      heading: 'For Thanksgiving Take-Home, Please Check Back Sunday, October 25 at 10:00 AM',
-      body: 'We are nearly booked out for indoor dining, but we will be accepting takeout reservations until Wednesday, November 25th.',
+      heading: 'Thanksgiving Dining Is Nearly Booked',
+      body: 'Indoor dining for Thanksgiving is nearly full. Take-home orders open Sunday, October 25 at 10:00 AM — please check back then. We will accept take-home orders until Wednesday, November 25.',
     },
   }
   const nearFullInfo = NEAR_FULL_DATES[formData.date]
