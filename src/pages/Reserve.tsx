@@ -204,7 +204,7 @@ export default function Reserve() {
     },
     '2026-11-26': {
       heading: 'Please Check Back Sunday, October 25 at 10:00 AM',
-      body: 'We are near max capacity for Thanksgiving, Thursday November 26. That is when we will start accepting reservations for takeout.',
+      body: 'We are nearly booked out for indoor dining, but we will be accepting takeout reservations until Wednesday, November 25th.',
     },
   }
   const nearFullInfo = NEAR_FULL_DATES[formData.date]
