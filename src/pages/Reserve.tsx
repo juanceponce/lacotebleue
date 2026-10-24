@@ -202,6 +202,10 @@ export default function Reserve() {
       heading: 'No Availability Today',
       body: 'We have no seating available for today. We would love to have you another day — please select a different date above.',
     },
+    '2026-11-26': {
+      heading: 'Please Check Back Sunday, October 25 at 10:00 AM',
+      body: 'We are near max capacity for Thanksgiving, Thursday November 26. That is when we will start accepting reservations for takeout.',
+    },
   }
   const nearFullInfo = NEAR_FULL_DATES[formData.date]
   const isNearFullDate = !!nearFullInfo
