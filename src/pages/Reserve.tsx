@@ -204,7 +204,7 @@ export default function Reserve() {
     },
     '2026-11-26': {
       heading: 'Thanksgiving Dining Is Nearly Booked',
-      body: 'Indoor dining for Thanksgiving is nearly full. Take-home orders open Sunday, October 25 at 10:00 AM — please check back then.\nWe will accept take-home orders until Wednesday, November 25.',
+      body: 'Indoor dining for Thanksgiving is nearly full. Take-home orders open Sunday, October 25 at 10:00 AM — please check back then.\n\nWe will accept take-home orders until Wednesday, November 25.',
     },
   }
   const nearFullInfo = NEAR_FULL_DATES[formData.date]
